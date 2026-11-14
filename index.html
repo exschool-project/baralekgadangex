@@ -371,7 +371,7 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
   <div class="bands" id="bands"></div>
   <div class="plate0">
     <span class="mono">Undangan Pernikahan</span>
-    <h1><span data-nama="wanita">Anak Daro</span> <em>&amp;</em> <span data-nama="pria">Marapulai</span></h1>
+    <h1><span data-nama="wanita">Annisa</span> <em>&amp;</em> <span data-nama="pria">Fadhli</span></h1>
     <p class="to">Kepada Yth.<br><b id="guest">Tamu Undangan</b></p>
     <p>Dengan penuh hormat, kami mengundang Anda untuk hadir dan memberikan doa restu.</p>
     <button class="go" id="openBtn">Buka Undangan <span>→</span></button>
@@ -391,7 +391,7 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
 <!-- HERO -->
 <section id="home">
   <div class="wrap hero">
-    <h1 class="h-title"><span class="ln"><span data-nama="wanita">Anak Daro</span></span><span class="ln l2"><span><i class="amp">&amp;</i> <span data-nama="pria">Marapulai</span></span></span></h1>
+    <h1 class="h-title"><span class="ln"><span data-nama="wanita">Annisa</span></span><span class="ln l2"><span><i class="amp">&amp;</i> <span data-nama="pria">Fadhli</span></span></span></h1>
     <figure class="house">
       <svg class="roof" viewBox="0 0 600 175" aria-hidden="true"><path class="rp" id="heroRoof" pathLength="1"/><rect x="0" y="162" width="600" height="8" fill="#f0b323"/></svg>
       <div class="wall"><img src="assets/pasangan-selamat-datang.jpg" alt="Anak daro dan marapulai berbusana adat marun dan emas menyambut tamu" fetchpriority="high"></div>
@@ -431,13 +431,13 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
       <article class="pf rv">
         <figure><img loading="lazy" src="assets/pengantin-wanita.jpg" alt="Mempelai wanita" style="object-position:50% 22%"></figure>
         <span class="mono role">Anak Daro</span>
-        <h3 data-nama="wanita">Anak Daro</h3>
+        <h3 data-lengkap="wanita">Annisa Rahmadani</h3>
         <p data-ortu="wanita"></p>
       </article>
       <article class="pf rv" style="--dl:.15s">
         <figure><img loading="lazy" src="assets/pengantin-pria.jpg" alt="Mempelai pria" style="object-position:50% 20%"></figure>
         <span class="mono role">Marapulai</span>
-        <h3 data-nama="pria">Marapulai</h3>
+        <h3 data-lengkap="pria">Fadhli Akbar</h3>
         <p data-ortu="pria"></p>
       </article>
     </div>
@@ -682,7 +682,7 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
     <span class="mono">Wassalamu’alaikum Warahmatullahi Wabarakatuh</span>
     <p class="big rv"><span class="ln"><span>Mang<em>kasih.</em></span></span></p>
     <div class="cols2">
-      <p>Atas kehadiran dan doa restu Bapak/Ibu/Saudara/i, kami ucapkan terima kasih. <em>Kami yang berbahagia,</em><br><b><span data-nama="wanita">Anak Daro</span> &amp; <span data-nama="pria">Marapulai</span></b></p>
+      <p>Atas kehadiran dan doa restu Bapak/Ibu/Saudara/i, kami ucapkan terima kasih. <em>Kami yang berbahagia,</em><br><b><span data-nama="wanita">Annisa</span> &amp; <span data-nama="pria">Fadhli</span></b></p>
       <span class="mono">Adat salingka nagari</span>
     </div>
   </div>
@@ -699,6 +699,7 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
 
 <script>
 /* =====  ATUR DI SINI  =====
+   panggilan: nama singkat untuk cover, judul, dan penutup; nama: nama lengkap di bagian Mempelai.
    Semua data undangan ada di blok ini. Ganti nama, jadwal, tempat, dan nomor WhatsApp.
    mulai    : waktu mulai acara pertama (ISO, WIB = +07:00)
    ulangHari: hitung mundur diulang tiap N hari setelah habis. Isi 0 bila ingin berhenti di hari H.
@@ -707,8 +708,8 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
    rekening : daftar rekening amplop digital. Kosongkan [] untuk menyembunyikan bagian ini.
    Tamu bisa dipersonalisasi lewat tautan: index.html?to=Nama+Tamu */
 const UNDANGAN = {
-  wanita: { nama: 'Anak Daro', orangtua: 'Putri dari Bapak (nama ayah) & Ibu (nama ibu)' },
-  pria:   { nama: 'Marapulai', orangtua: 'Putra dari Bapak (nama ayah) & Ibu (nama ibu)' },
+  wanita: { panggilan: 'Annisa', nama: 'Annisa Rahmadani', orangtua: 'Putri dari Bapak Syafrizal & Ibu Elvi Yenti' },
+  pria:   { panggilan: 'Fadhli', nama: 'Fadhli Akbar', orangtua: 'Putra dari Bapak Zulkifli & Ibu Rosmaniar' },
   mulai: '2026-11-21T09:00:00+07:00',
   ulangHari: 7,
   acara: [
@@ -886,11 +887,12 @@ const UNDANGAN = {
   const U = UNDANGAN, A0 = Date.parse(U.mulai), CYC = U.ulangHari * 864e5, loop = U.ulangHari > 0;
   const nextStart = now => (!loop || now <= A0) ? A0 : A0 + Math.ceil((now - A0) / CYC) * CYC;
   const pad = n => String(n).padStart(2, '0');
-  $$('[data-nama]').forEach(e => e.textContent = U[e.dataset.nama].nama);
+  $$('[data-nama]').forEach(e => e.textContent = U[e.dataset.nama].panggilan || U[e.dataset.nama].nama);
+  $$('[data-lengkap]').forEach(e => e.textContent = U[e.dataset.lengkap].nama);
   $$('[data-ortu]').forEach(e => e.textContent = U[e.dataset.ortu].orangtua);
   const guest = (new URLSearchParams(location.search).get('to') || '').trim();
   $('#guest').textContent = guest || 'Tamu Undangan'; $('#rNama').value = guest;
-  document.title = `Undangan Pernikahan — ${U.wanita.nama} & ${U.pria.nama}`;
+  document.title = `Undangan Pernikahan — ${U.wanita.panggilan || U.wanita.nama} & ${U.pria.panggilan || U.pria.nama}`;
   function fitHero() {
     const h = $('.h-title'), ls = $$('.h-title .ln > span'); ls.forEach(l => l.style.display = 'inline-block'); h.style.fontSize = '100px';
     const w = Math.max(...ls.map(l => l.offsetWidth)); ls.forEach(l => l.style.display = '');
