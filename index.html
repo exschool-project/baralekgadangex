@@ -63,7 +63,7 @@ a{color:inherit}
 .plate0 h1{font-weight:800;font-size:clamp(2.6rem,9vw,5rem);line-height:.9;letter-spacing:-.035em;margin:12px 0 18px}
 .plate0 h1 em{font-weight:400}
 .plate0 p{font-size:1rem;margin-bottom:22px}
-.go{display:inline-flex;align-items:center;gap:14px;padding:15px 26px;background:var(--ink);color:var(--krem);font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;transition:background .3s,transform .3s}
+.go{text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:14px;padding:15px 26px;background:var(--ink);color:var(--krem);font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;transition:background .3s,transform .3s}
 .go:hover{background:var(--bata);transform:translateX(4px)}
 
 /* ---- nav ---- */
@@ -196,19 +196,25 @@ body.opened .ground{transform:none}
 @media(max-width:860px){.rg{grid-template-columns:1fr}}
 
 /* ---- marawa ---- */
-.mw{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
+.dark{background:radial-gradient(ellipse at 78% 45%,#33201a 0,#0f0b0a 64%);color:var(--krem);overflow:hidden}
+.bgtxt{position:absolute;left:0;top:5%;white-space:nowrap;font-weight:800;font-style:italic;font-size:clamp(8rem,24vw,22rem);line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px rgba(239,227,200,.1);animation:bgtxt 70s linear infinite;pointer-events:none}
+@keyframes bgtxt{to{transform:translateX(-50%)}}
+.mw{position:relative;display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,7vw,110px);align-items:center}
 .flagbox{position:relative;padding-left:16px}
-.pole{position:absolute;left:0;top:-24px;bottom:-90px;width:10px;background:var(--ink)}
-.pole::before{content:"";position:absolute;top:-12px;left:-3px;width:16px;height:16px;border-radius:50%;background:var(--ink)}
+.pole{position:absolute;left:0;top:-30px;bottom:-96px;width:11px;background:linear-gradient(90deg,#8a6420,#f3d27a 45%,#8a6420)}
+.pole::before{content:"";position:absolute;top:-14px;left:-3px;width:17px;height:17px;border-radius:50%;background:linear-gradient(135deg,#f7dc8c,#a87a1f)}
+.pole::after{content:"";position:absolute;bottom:-6px;left:-26px;width:63px;height:12px;background:linear-gradient(90deg,#8a6420,#f3d27a 50%,#8a6420)}
 #flag{display:block;width:100%;height:auto}
 .cols{list-style:none;margin-top:28px;display:grid;gap:0}
-.cols li{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:16px 0;border-top:1px solid rgba(15,11,10,.4);align-items:start}
-.cols li:last-child{border-bottom:1px solid rgba(15,11,10,.4)}
-.cols i{width:34px;height:34px;border:2px solid var(--ink)}
+.cols li{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:16px 0;border-top:1px solid rgba(239,227,200,.25);align-items:start;cursor:pointer;transition:padding .35s,color .35s}
+.cols li:last-child{border-bottom:1px solid rgba(239,227,200,.25)}
+.cols i{width:34px;height:34px;border:2px solid var(--krem);transition:transform .35s}
 .cols b{font-size:1.3rem;font-style:italic;font-weight:700;display:block}
-.cols span{font-size:.98rem}
-.note{margin-top:14px;opacity:.75}
-@media(max-width:860px){.mw{grid-template-columns:1fr}}
+.cols span{font-size:.98rem;opacity:.85}
+.cols li.on{padding-left:16px;color:var(--kuning)}
+.cols li.on i{transform:rotate(45deg) scale(.9)}
+.note{margin-top:14px;opacity:.6}
+@media(max-width:860px){.mw{grid-template-columns:1fr}.flagbox{order:-1;margin-bottom:60px}}
 
 /* ---- bunyi ---- */
 .gongs{display:flex;justify-content:center;align-items:flex-end;gap:clamp(10px,2.4vw,34px);margin:clamp(40px,6vw,70px) 0 0;padding-bottom:10px;border-bottom:8px solid #3a2616;position:relative}
@@ -228,6 +234,60 @@ body.opened .ground{transform:none}
 .seni h3{font-size:clamp(1.7rem,4vw,3.2rem);font-weight:700;font-style:italic;letter-spacing:-.03em;line-height:1}
 .seni p{opacity:.85;font-size:1rem}
 @media(max-width:700px){.seni .r{grid-template-columns:1fr;gap:6px}}
+
+/* ---- ticker ---- */
+.ticker{background:var(--bata);color:var(--krem);overflow:hidden;padding:20px 0;white-space:nowrap;border-block:1px solid rgba(0,0,0,.35)}
+.tk{display:inline-flex;will-change:transform}
+.tk span{display:flex;align-items:center;gap:48px;padding-right:48px;font-size:clamp(1.6rem,3.6vw,3rem);font-style:italic;font-weight:600;letter-spacing:-.02em}
+.tk span::after{content:"";width:14px;height:14px;background:var(--kuning);transform:rotate(45deg);flex:none}
+
+/* ---- acara ---- */
+.ac>*{min-width:0}
+.ac{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(34px,5.5vw,90px);align-items:start}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(8px,1.4vw,16px)}
+.cell{border:2px solid var(--ink);padding:clamp(14px,2vw,26px) 6px 12px;text-align:center;background:var(--krem);transition:transform .4s}
+.cell:hover{transform:translateY(-6px)}
+.cell .num{display:block;font-weight:800;font-size:clamp(2.3rem,5.6vw,5rem);line-height:1.05;letter-spacing:-.04em;font-variation-settings:'opsz' 144;font-variant-numeric:tabular-nums lining-nums}
+.cell:nth-child(4){background:var(--bata);color:var(--krem);border-color:var(--bata)}
+.cell .mono{display:block;margin-top:8px;font-size:.62rem}
+.dg{display:inline-grid;overflow:hidden;height:1.05em;line-height:1.05;vertical-align:top}
+.dg span{grid-area:1/1;display:block}
+.dg .n{animation:dgin .55s cubic-bezier(.2,.8,.2,1)}
+.dg .o{animation:dgout .55s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes dgin{from{transform:translateY(105%)}}
+@keyframes dgout{to{transform:translateY(-105%)}}
+.cyc{margin:24px 0 34px}
+.cyc .mono{display:flex;justify-content:space-between;margin-bottom:10px}
+.trk{height:6px;background:rgba(15,11,10,.15);overflow:hidden}
+.trk i{display:block;height:100%;background:var(--bata);transform-origin:0 50%;transform:scaleX(0);transition:transform 1s linear}
+.det{display:grid}
+.det>div{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:15px 0;border-top:1px solid rgba(15,11,10,.25)}
+.det>div:last-child{border-bottom:1px solid rgba(15,11,10,.25)}
+.det dt{padding-top:6px;opacity:.7}
+.det dd{font-size:1.18rem;font-weight:600;line-height:1.3}
+.det dd small{display:block;font-weight:400;font-size:.95rem;opacity:.8;margin-top:2px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.go.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink);padding:13px 22px}
+.go.ghost:hover{background:var(--ink);color:var(--krem)}
+.map{position:relative;aspect-ratio:4/5;min-height:380px;border:2px solid var(--ink);box-shadow:14px 14px 0 var(--bata);background:repeating-linear-gradient(45deg,#e6d7b4 0 12px,#efe3c8 12px 24px);margin-right:14px}
+.map::before{content:"Memuat peta…";position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;opacity:.6}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.55) sepia(.25) contrast(1.05);transition:filter .6s}
+.map:hover iframe{filter:none}
+.map .chip{position:absolute;top:14px;left:14px;z-index:2;background:var(--ink);color:var(--krem);padding:8px 12px;display:flex;align-items:center;gap:8px}
+.map .chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--kuning);animation:blip 1.6s infinite}
+@keyframes blip{50%{opacity:.2}}
+.mini{display:inline-block;width:fit-content;color:var(--kuning);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
+.mini b{font-weight:500;color:var(--krem)}
+@media(max-width:860px){.ac{grid-template-columns:minmax(0,1fr)}.det>div{grid-template-columns:100px 1fr}.map{aspect-ratio:1;min-height:0}}
+
+/* ---- gerak tambahan ---- */
+.fig .im{position:absolute;inset:0;overflow:hidden}
+.fig .im img{transform:scale(1.14);will-change:transform}
+.ph{overflow:hidden}
+.ph img{clip-path:inset(0 0 100% 0);transform:scale(1.18);transition:clip-path 1.4s cubic-bezier(.7,0,.2,1) .2s,transform 1.8s cubic-bezier(.2,.8,.2,1) .2s}
+.pl.in .ph img{clip-path:inset(0);transform:none}
+html{scroll-padding-top:56px}
+:focus-visible{outline:3px solid var(--kuning);outline-offset:3px}
 
 /* ---- footer ---- */
 footer{background:var(--bata);color:var(--krem);padding:0 0 130px;overflow:hidden}
@@ -273,11 +333,11 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
 <nav>
   <div class="wrap mono">
     <a href="#home">Ranah Minang</a>
-    <div class="links"><a href="#galeri">Gambar</a><a href="#busana">Busana</a><a href="#falsafah">Falsafah</a><a href="#rumah">Rumah</a><a href="#marawa">Marawa</a><a href="#bunyi">Bunyi</a></div>
+    <div class="links"><a href="#galeri">Gambar</a><a href="#busana">Busana</a><a href="#falsafah">Falsafah</a><a href="#marawa">Marawa</a><a href="#rumah">Rumah</a><a href="#bunyi">Bunyi</a><a href="#acara">Acara</a></div>
     <button class="burger mono" id="burger">Menu</button>
   </div>
 </nav>
-<div id="menu"><a href="#galeri">Gambar</a><a href="#busana">Busana</a><a href="#falsafah">Falsafah</a><a href="#rumah">Rumah</a><a href="#marawa">Marawa</a><a href="#bunyi">Bunyi</a></div>
+<div id="menu"><a href="#galeri">Gambar</a><a href="#busana">Busana</a><a href="#falsafah">Falsafah</a><a href="#marawa">Marawa</a><a href="#rumah">Rumah</a><a href="#bunyi">Bunyi</a><a href="#acara">Acara</a></div>
 
 <main>
 <!-- HERO -->
@@ -293,11 +353,14 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
     <div class="h-meta fade">
       <span class="mono" style="color:var(--kuning)">Sumatera Barat · Ranah Minangkabau</span>
       <p>Negeri yang adatnya ditenun, bukan hanya ditulis. Di sini dipajang busana, falsafah, rumah, dan bunyi dari tanah Minang.</p>
+      <a class="mini mono" href="#acara">Acara berikutnya · <b id="miniCd">—</b></a>
       <div class="scroll mono"><i></i>Gulir</div>
     </div>
   </div>
   <svg class="pr" data-n="36" aria-hidden="true"></svg>
 </section>
+
+<div class="ticker" aria-hidden="true"><div class="tk" id="tk"></div></div>
 
 <!-- GALERI -->
 <section id="galeri" class="pin">
@@ -308,10 +371,10 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
         <h2 class="h2"><span class="ln"><span>Beludru,</span></span><span class="ln"><span><em>benang emas.</em></span></span></h2>
         <p>Suntiang yang bergetar tiap melangkah, sulaman yang dikerjakan helai demi helai. Empat potret dari pelaminan. Gulir ke bawah untuk berjalan di sepanjang dindingnya.</p>
       </div>
-      <figure class="fig" style="--ar:1402/1122" data-i="0"><span class="no mono">01</span><img src="assets/pasangan-selamat-datang.jpg" alt="Pasangan menyambut tamu" style="object-position:50% 30%"><figcaption class="mono"><b>Salamaik datang</b><span>Anak daro dan marapulai menyambut tamu di depan pelaminan emas dan beludru merah.</span></figcaption></figure>
-      <figure class="fig" style="--ar:1086/1448" data-i="1"><span class="no mono">02</span><img src="assets/pengantin-wanita.jpg" alt="Anak daro dengan suntiang bertanduk"><figcaption class="mono"><b>Anak daro</b><span>Suntiang bertanduk di atas hijab marun, dukuah berlapis, dan rumbai emas di bahu.</span></figcaption></figure>
-      <figure class="fig" style="--ar:1122/1402" data-i="2"><span class="no mono">03</span><img src="assets/pengantin-pria.jpg" alt="Marapulai berdeta"><figcaption class="mono"><b>Marapulai</b><span>Deta bersulam emas, kalung tiga lapis, sasampiang songket, dan karih di pinggang.</span></figcaption></figure>
-      <figure class="fig" style="--ar:1312/1199" data-i="3"><span class="no mono">04</span><img src="assets/pasangan-pelaminan.jpg" alt="Pasangan berdiri berdampingan" style="object-position:50% 25%"><figcaption class="mono"><b>Basanding</b><span>Berdiri berdampingan, lengan saling menggamit, serasi dalam marun dan emas.</span></figcaption></figure>
+      <figure class="fig" style="--ar:1402/1122" data-i="0"><span class="no mono">01</span><div class="im"><img src="assets/pasangan-selamat-datang.jpg" alt="Pasangan menyambut tamu" style="object-position:50% 30%"></div><figcaption class="mono"><b>Salamaik datang</b><span>Anak daro dan marapulai menyambut tamu di depan pelaminan emas dan beludru merah.</span></figcaption></figure>
+      <figure class="fig" style="--ar:1086/1448" data-i="1"><span class="no mono">02</span><div class="im"><img src="assets/pengantin-wanita.jpg" alt="Anak daro dengan suntiang bertanduk"></div><figcaption class="mono"><b>Anak daro</b><span>Suntiang bertanduk di atas hijab marun, dukuah berlapis, dan rumbai emas di bahu.</span></figcaption></figure>
+      <figure class="fig" style="--ar:1122/1402" data-i="2"><span class="no mono">03</span><div class="im"><img src="assets/pengantin-pria.jpg" alt="Marapulai berdeta"></div><figcaption class="mono"><b>Marapulai</b><span>Deta bersulam emas, kalung tiga lapis, sasampiang songket, dan karih di pinggang.</span></figcaption></figure>
+      <figure class="fig" style="--ar:1312/1199" data-i="3"><span class="no mono">04</span><div class="im"><img src="assets/pasangan-pelaminan.jpg" alt="Pasangan berdiri berdampingan" style="object-position:50% 25%"></div><figcaption class="mono"><b>Basanding</b><span>Berdiri berdampingan, lengan saling menggamit, serasi dalam marun dan emas.</span></figcaption></figure>
       <div class="gend mono">Lanjut ke bawah ↓</div>
     </div>
     <div class="gctl mono"><span id="gcount">01 / 04</span><div class="pg"><i id="gprog"></i></div><span>Gulir</span></div>
@@ -381,11 +444,32 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
   </div>
 </section>
 
+<!-- MARAWA -->
+<section id="marawa" class="sec dark">
+  <div class="bgtxt" aria-hidden="true">MARAWA · MARAWA · MARAWA · MARAWA · MARAWA · MARAWA · MARAWA · MARAWA ·</div>
+  <div class="wrap mw">
+    <div>
+      <header class="sh" style="margin-bottom:0">
+        <span class="mono" style="color:var(--kuning)">Bab 04 — Panji</span>
+        <h2 class="h2 rv"><span class="ln"><span>Marawa,</span></span><span class="ln"><span><em>tiga warna.</em></span></span></h2>
+        <p class="sub rv">Arahkan kursor atau ketuk satu warna untuk menyorotnya di bendera.</p>
+      </header>
+      <ul class="cols rv" id="cols">
+        <li data-i="0"><i style="background:#0b0807"></i><div><b>Hitam</b><span>Ninik mamak, pemimpin kaum. Melambangkan keteguhan dan kekekalan.</span></div></li>
+        <li data-i="1"><i style="background:#a8231b"></i><div><b>Merah</b><span>Cadiak pandai dan dubalang. Melambangkan keberanian dan daya tahan.</span></div></li>
+        <li data-i="2"><i style="background:#dc9d14"></i><div><b>Kuning</b><span>Alim ulama. Melambangkan keagungan dan kemuliaan.</span></div></li>
+      </ul>
+      <p class="note mono">Urutan dan tafsir warna bisa berbeda antar luhak.</p>
+    </div>
+    <div class="flagbox rv"><div class="pole"></div><canvas id="flag" width="1000" height="640"></canvas></div>
+  </div>
+</section>
+
 <!-- RUMAH GADANG -->
 <section id="rumah" class="sec cream">
   <div class="wrap">
     <header class="sh">
-      <span class="mono">Bab 04 — Arsitektur</span>
+      <span class="mono">Bab 05 — Arsitektur</span>
       <h2 class="h2 rv"><span class="ln"><span>Rumah</span></span><span class="ln"><span><em>gadang.</em></span></span></h2>
       <p class="sub rv">Gulir pelan-pelan. Rumahnya digambar mengikuti gerak jari Anda.</p>
     </header>
@@ -411,25 +495,6 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
   </div>
 </section>
 
-<!-- MARAWA -->
-<section id="marawa" class="sec yellow">
-  <div class="wrap mw">
-    <div>
-      <header class="sh" style="margin-bottom:0">
-        <span class="mono">Bab 05 — Panji</span>
-        <h2 class="h2 rv"><span class="ln"><span>Marawa,</span></span><span class="ln"><span><em>tiga warna.</em></span></span></h2>
-      </header>
-      <ul class="cols rv">
-        <li><i style="background:#0f0b0a"></i><div><b>Hitam</b><span>Ninik mamak, pemimpin kaum. Melambangkan keteguhan dan kekekalan.</span></div></li>
-        <li><i style="background:#a8231b"></i><div><b>Merah</b><span>Cadiak pandai dan dubalang. Melambangkan keberanian dan daya tahan.</span></div></li>
-        <li><i style="background:#dc9d14"></i><div><b>Kuning</b><span>Alim ulama. Melambangkan keagungan dan kemuliaan.</span></div></li>
-      </ul>
-      <p class="note mono">Urutan dan tafsir warna bisa berbeda antar luhak.</p>
-    </div>
-    <div class="flagbox rv"><div class="pole"></div><canvas id="flag" width="960" height="600"></canvas></div>
-  </div>
-</section>
-
 <!-- BUNYI -->
 <section id="bunyi" class="sec">
   <div class="wrap">
@@ -447,6 +512,39 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
       <div class="r rv"><h3>Randai</h3><p>Teater rakyat berformasi lingkaran. Gerak galombang, tepuk, nyanyian, dan cerita dijalin jadi satu.</p></div>
       <div class="r rv"><h3>Silek</h3><p>Bela diri Minang yang berpijak pada langkah ampek: empat langkah dasar, empat arah waspada.</p></div>
       <div class="r rv"><h3>Saluang</h3><p>Seruling bambu tipis yang mengiringi dendang, sering terdengar di malam hari.</p></div>
+    </div>
+  </div>
+</section>
+<!-- ACARA -->
+<section id="acara" class="sec cream">
+  <div class="wrap">
+    <header class="sh">
+      <span class="mono">Bab 07 — Acara</span>
+      <h2 class="h2 rv"><span class="ln"><span>Sampai</span></span><span class="ln"><span><em>basuo.</em></span></span></h2>
+      <p class="sub rv">Hitung mundur menuju pertemuan berikutnya. Begitu waktunya habis, penghitung otomatis mulai lagi dari tujuh hari.</p>
+    </header>
+    <div class="ac">
+      <div>
+        <div class="cd" id="cd" role="timer" aria-label="Hitung mundur acara">
+          <div class="cell rv"><span class="num"><span class="dg" data-u="d"></span></span><span class="mono">Hari</span></div>
+          <div class="cell rv" style="--dl:.08s"><span class="num"><span class="dg" data-u="h"></span></span><span class="mono">Jam</span></div>
+          <div class="cell rv" style="--dl:.16s"><span class="num"><span class="dg" data-u="m"></span></span><span class="mono">Menit</span></div>
+          <div class="cell rv" style="--dl:.24s"><span class="num"><span class="dg" data-u="s"></span></span><span class="mono">Detik</span></div>
+        </div>
+        <div class="cyc rv"><div class="mono"><span>Siklus <span id="cycLen">7</span> hari</span><span id="cycPct">0%</span></div><div class="trk"><i id="cycBar"></i></div></div>
+        <dl class="det rv">
+          <div><dt class="mono">Tanggal</dt><dd id="evDate">—</dd></div>
+          <div><dt class="mono">Waktu</dt><dd id="evTime">—</dd></div>
+          <div><dt class="mono">Tempat</dt><dd id="evPlace">—</dd></div>
+          <div><dt class="mono">Alamat</dt><dd id="evAddr">—</dd></div>
+        </dl>
+        <div class="btns rv">
+          <a class="go" id="mapOpen" target="_blank" rel="noopener">Buka di Maps <span>↗</span></a>
+          <a class="go ghost" id="mapDir" target="_blank" rel="noopener">Petunjuk arah</a>
+          <button class="go ghost" id="icsBtn">Simpan ke kalender</button>
+        </div>
+      </div>
+      <figure class="map rv"><div class="chip mono">Lokasi acara</div><iframe id="mapFrame" title="Peta lokasi acara" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></figure>
     </div>
   </div>
 </section>
@@ -474,6 +572,19 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
 </div>
 
 <script>
+/* =====  ATUR DI SINI  =====
+   anchor   : waktu mulai acara pertama (format ISO, zona WIB = +07:00)
+   cycleDays: panjang siklus hitung mundur (hari). Habis -> otomatis mulai lagi.
+   tempat/alamat/peta: nama tempat, alamat tampilan, dan kata kunci pencarian Google Maps */
+const ACARA = {
+  anchor: '2026-11-21T10:00:00+07:00',
+  cycleDays: 7,
+  durasiJam: 3,
+  judul: 'Acara — Ranah Minang',
+  tempat: 'Istano Basa Pagaruyung',
+  alamat: 'Jl. Sutan Alam Bagagarsyah, Pagaruyung, Kec. Tanjung Emas, Kab. Tanah Datar, Sumatera Barat',
+  peta: 'Istano Basa Pagaruyung, Tanah Datar, Sumatera Barat'
+};
 (() => {
   const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -546,6 +657,7 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
     const g = rg.getBoundingClientRect(), t = clamp((innerHeight * .85 - g.top) / (innerHeight * .55 + g.height * .5));
     ds.forEach(el => { const d = +el.dataset.d, l = clamp((t * 1.25 - d * .07) / .35); el.style.strokeDashoffset = 1 - l; });
     rg.classList.toggle('full', t > .8);
+    figs.forEach(f => { const q = f.getBoundingClientRect(), im = $('img', f); im.style.transform = `translate3d(${(q.left + q.width / 2 - innerWidth / 2) * -.05}px,0,0) scale(1.14)`; });
   }
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
   layout(); tick();
@@ -574,21 +686,36 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
   $$('.row').forEach(r => r.addEventListener('click', () => r.classList.toggle('on')));
 
   /* marawa (kanvas, berkibar) */
-  const fc = $('#flag'), fx = fc.getContext('2d'), FW = 960, FH = 600, cols = ['#0f0b0a', '#a8231b', '#dc9d14'];
+  const fc = $('#flag'), fx = fc.getContext('2d'), FW = 1000, FH = 640, WF = 880, HH = 400, GOLD = '#f0b323';
+  const cols = ['#0b0807', '#a8231b', '#dc9d14']; let hl = -1;
   function flag(t) {
     fx.clearRect(0, 0, FW, FH);
-    for (let x = 0; x < FW; x += 4) {
-      const u = x / FW, ph = u * 8 - t * 2.6, off = Math.sin(ph) * 34 * u, sh = Math.cos(ph) * u;
-      const y0 = 50 + off, hh = FH - 150;
-      fx.fillStyle = cols[Math.min(2, Math.floor(u * 3))]; fx.fillRect(x, y0, 5, hh);
-      fx.fillStyle = sh < 0 ? `rgba(0,0,0,${-sh * .28})` : `rgba(255,240,200,${sh * .16})`; fx.fillRect(x, y0, 5, hh);
-      fx.fillStyle = '#0f0b0a'; fx.fillRect(x, y0, 5, 6); fx.fillRect(x, y0 + hh - 6, 5, 6);
+    const wave = u => (Math.sin(u * 7 - t * 2.6) * 30 + Math.sin(u * 3 - t * 1.3) * 8) * u;
+    for (let x = 0; x < WF; x += 4) {
+      const u = x / WF, ph = u * 7 - t * 2.6, y0 = 90 + wave(u), sh = Math.cos(ph) * u, si = Math.min(2, Math.floor(u * 3));
+      fx.fillStyle = cols[si]; fx.fillRect(x, y0, 5, HH);
+      if (hl >= 0 && hl !== si) { fx.fillStyle = 'rgba(15,11,10,.7)'; fx.fillRect(x, y0, 5, HH); }
+      fx.fillStyle = sh < 0 ? `rgba(0,0,0,${-sh * .32})` : `rgba(255,235,190,${sh * .14})`; fx.fillRect(x, y0, 5, HH);
+      const tri = 1 - Math.abs(((x % 64) / 64) * 2 - 1), hh = 5 + tri * 22;
+      fx.fillStyle = GOLD; fx.fillRect(x, y0, 5, hh); fx.fillRect(x, y0 + HH - hh, 5, hh);
+      [WF / 3, WF * 2 / 3].forEach(sx => { if (Math.abs(x + 2 - sx) < 4) { fx.fillStyle = GOLD; fx.fillRect(x, y0, 5, HH); } });
+      if (x % 20 < 10) { fx.fillStyle = 'rgba(239,227,200,.5)'; fx.fillRect(x, y0 + HH / 2 - 1, 5, 3); }
+    }
+    const eo = 90 + wave(1); fx.lineWidth = 3; fx.strokeStyle = '#dc9d14'; fx.lineCap = 'round';
+    for (let i = 0; i < 26; i++) {
+      const yy = eo + (i + .5) * HH / 26, sw = Math.sin(t * 3 + i * .5) * 7;
+      fx.beginPath(); fx.moveTo(WF, yy); fx.quadraticCurveTo(WF + 24, yy + sw * .5, WF + 54 + sw, yy + sw); fx.stroke();
     }
   }
   let fvis = false; const ft0 = performance.now();
   new IntersectionObserver(e => { fvis = e[0].isIntersecting; if (fvis) fl(); }).observe(fc);
   function fl() { if (!fvis) return; flag((performance.now() - ft0) / 1000); if (!reduce) requestAnimationFrame(fl); }
   flag(0);
+  $$('#cols li').forEach(li => {
+    const on = v => { hl = v; $$('#cols li').forEach(x => x.classList.toggle('on', +x.dataset.i === v)); if (reduce) flag(0); };
+    li.addEventListener('mouseenter', () => on(+li.dataset.i)); li.addEventListener('mouseleave', () => on(-1));
+    li.addEventListener('click', () => on(hl === +li.dataset.i ? -1 : +li.dataset.i));
+  });
 
   /* talempong */
   let ac; const notes = [['Do', 523.25], ['Re', 587.33], ['Mi', 659.25], ['Sol', 783.99], ['La', 880]];
@@ -606,6 +733,62 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
   addEventListener('keydown', e => { const n = +e.key; if (n >= 1 && n <= 5) hit(n - 1); });
   let busy = false;
   $('#demo').addEventListener('click', async () => { if (busy) return; busy = true; for (const s of [0, 2, 3, 2, 4, 3, 2, 1, 0, 1, 2, 0]) { hit(s); await new Promise(r => setTimeout(r, 300)); } busy = false; });
+
+  /* ---- ticker pepatah (melaju lebih cepat saat di-scroll) ---- */
+  const pepatah = ['Alam takambang jadi guru', 'Adat basandi syarak, syarak basandi Kitabullah', 'Dimana bumi dipijak, di sinan langik dijunjuang', 'Sakali aia gadang, sakali tapian barubah', 'Bulek aia dek pambuluah, bulek kato dek mufakaik', 'Duduak surang basampik-sampik, duduak basamo balapang-lapang'];
+  const tk = $('#tk'), row = pepatah.map(t => `<span>${t}</span>`).join(''); tk.innerHTML = row + row;
+  let tx = 0, lastY = scrollY, vel = 0;
+  (function tkLoop() {
+    const dy = scrollY - lastY; lastY = scrollY; vel = vel * .9 + Math.abs(dy) * .1; tx -= .7 + vel * .35;
+    const half = tk.scrollWidth / 2; if (-tx >= half) tx += half;
+    tk.style.transform = `translate3d(${tx}px,0,0)`;
+    if (!reduce) requestAnimationFrame(tkLoop);
+  })();
+
+  /* ---- stagger ---- */
+  $$('.rows .row').forEach((r, i) => r.style.setProperty('--dl', (i * .07) + 's'));
+  $$('.seni .r').forEach((r, i) => r.style.setProperty('--dl', (i * .08) + 's'));
+
+  /* ---- acara: hitung mundur siklus ---- */
+  const CYC = ACARA.cycleDays * 864e5, A0 = Date.parse(ACARA.anchor);
+  const nextStart = now => now <= A0 ? A0 : A0 + Math.ceil((now - A0) / CYC) * CYC;
+  const pad = n => String(n).padStart(2, '0');
+  const q = encodeURIComponent(ACARA.peta);
+  $('#mapOpen').href = 'https://www.google.com/maps/search/?api=1&query=' + q;
+  $('#mapDir').href = 'https://www.google.com/maps/dir/?api=1&destination=' + q;
+  $('#mapFrame').src = 'https://www.google.com/maps?q=' + q + '&z=15&output=embed';
+  $('#cycLen').textContent = ACARA.cycleDays;
+  $('#evPlace').textContent = ACARA.tempat; $('#evAddr').textContent = ACARA.alamat;
+  const dgs = {}; $$('.dg').forEach(e => dgs[e.dataset.u] = e);
+  function setDg(el, v) {
+    if (el.dataset.v === v) return; const first = !el.dataset.v; el.dataset.v = v;
+    const n = document.createElement('span'); n.textContent = v;
+    if (!first) { n.className = 'n'; el.querySelectorAll('span').forEach(o => { o.className = 'o'; setTimeout(() => o.remove(), 600); }); }
+    el.appendChild(n);
+  }
+  const fDate = new Intl.DateTimeFormat('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' });
+  const fTime = new Intl.DateTimeFormat('id-ID', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' });
+  let lastEv = 0;
+  function cdTick() {
+    const now = Date.now(), ns = nextStart(now), diff = Math.max(0, ns - now), s = Math.floor(diff / 1000);
+    const d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), sc = s % 60;
+    setDg(dgs.d, pad(d)); setDg(dgs.h, pad(h)); setDg(dgs.m, pad(m)); setDg(dgs.s, pad(sc));
+    const pct = clamp(1 - diff / CYC); $('#cycBar').style.transform = `scaleX(${pct})`; $('#cycPct').textContent = Math.round(pct * 100) + '%';
+    $('#miniCd').textContent = `${d} hari ${pad(h)}:${pad(m)}:${pad(sc)}`;
+    if (ns !== lastEv) {
+      lastEv = ns; const dt = new Date(ns);
+      $('#evDate').textContent = fDate.format(dt);
+      const end = new Date(ns + ACARA.durasiJam * 36e5);
+      $('#evTime').innerHTML = `${fTime.format(dt).replace('.', ':')} WIB <small>sampai ${fTime.format(end).replace('.', ':')} WIB · diulang tiap ${ACARA.cycleDays} hari</small>`;
+    }
+  }
+  cdTick(); setInterval(cdTick, 250);
+  $('#icsBtn').addEventListener('click', () => {
+    const st = nextStart(Date.now()), en = st + ACARA.durasiJam * 36e5, z = t => new Date(t).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+    const txt = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Ranah Minang//ID', 'BEGIN:VEVENT', 'UID:' + st + '@ranah-minang', 'DTSTAMP:' + z(Date.now()), 'DTSTART:' + z(st), 'DTEND:' + z(en),
+      'RRULE:FREQ=DAILY;INTERVAL=' + ACARA.cycleDays, 'SUMMARY:' + ACARA.judul, 'LOCATION:' + (ACARA.tempat + ', ' + ACARA.alamat).replace(/,/g, '\\,'), 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt], { type: 'text/calendar' })); a.download = 'acara-ranah-minang.ics'; a.click();
+  });
 })();
 </script>
 </body>
