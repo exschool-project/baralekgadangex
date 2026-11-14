@@ -60,7 +60,9 @@ a{color:inherit}
 .plate0{position:relative;z-index:2;background:var(--krem);color:var(--ink);padding:clamp(24px,4vw,44px) clamp(26px,5vw,60px);text-align:left;max-width:min(560px,88vw);opacity:0;animation:fadein .6s 1s forwards;transition:opacity .4s,transform .6s}
 #tenun.go .plate0{opacity:0!important;transform:translateY(-20px);animation:none}
 @keyframes fadein{to{opacity:1}}
-.plate0 h1{font-weight:800;font-size:clamp(2.6rem,9vw,5rem);line-height:.9;letter-spacing:-.035em;margin:12px 0 18px}
+.plate0 h1{font-weight:800;font-size:clamp(2rem,6.4vw,3.6rem);line-height:.95;letter-spacing:-.035em;margin:12px 0 20px}
+.plate0 .to{font-size:.9rem;opacity:.8;margin-bottom:14px}
+.plate0 .to b{display:block;font-size:1.7rem;font-style:italic;font-weight:700;opacity:1;margin-top:2px;line-height:1.15}
 .plate0 h1 em{font-weight:400}
 .plate0 p{font-size:1rem;margin-bottom:22px}
 .go{text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:14px;padding:15px 26px;background:var(--ink);color:var(--krem);font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;transition:background .3s,transform .3s}
@@ -86,6 +88,7 @@ nav a{text-decoration:none}
 #home{position:relative;padding:110px 0 0;overflow:hidden;min-height:100svh;display:flex;flex-direction:column}
 .hero{position:relative;flex:1;display:grid;grid-template-columns:1fr minmax(300px,38vw);grid-template-rows:1fr auto;align-items:center;padding-bottom:50px}
 .h-title{grid-column:1/3;grid-row:1;font-weight:800;font-size:clamp(4rem,14.2vw,13.5rem);line-height:.84;letter-spacing:-.05em;font-variation-settings:'opsz' 144;position:relative;z-index:1}
+.h-title .ln>span{white-space:nowrap}
 .h-title .l2{color:var(--kuning);font-weight:400;font-style:italic;letter-spacing:-.04em}
 .house{grid-column:2;grid-row:1;justify-self:end;width:min(470px,38vw);position:relative;z-index:2;margin-right:2vw}
 .roof{display:block;width:112%;margin-left:-6%;overflow:visible}
@@ -289,6 +292,50 @@ body.opened .ground{transform:none}
 html{scroll-padding-top:56px}
 :focus-visible{outline:3px solid var(--kuning);outline-offset:3px}
 
+/* ---- undangan ---- */
+.amp{font-style:normal;font-weight:400;opacity:.9}
+.narrow{max-width:860px;text-align:center}
+.ctr{display:block;text-align:center}
+.ayat{font-size:clamp(1.4rem,2.8vw,2.3rem);font-style:italic;font-weight:500;line-height:1.35;letter-spacing:-.01em;margin:26px auto 22px}
+.salam{margin:40px auto 0;max-width:34em;font-size:1.1em}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,100px);align-items:start}
+.pf:nth-child(2){margin-top:clamp(0px,8vw,110px)}
+.pf figure{aspect-ratio:4/5;overflow:hidden;box-shadow:14px 14px 0 var(--bata);margin-right:14px}
+.pf figure img{width:100%;height:100%;object-fit:cover;clip-path:inset(0 0 100% 0);transform:scale(1.15);transition:clip-path 1.4s cubic-bezier(.7,0,.2,1) .2s,transform 1.8s cubic-bezier(.2,.8,.2,1) .2s}
+.pf.in figure img{clip-path:inset(0);transform:none}
+.pf .role{display:block;margin:28px 0 8px;color:var(--kuning)}
+.pf h3{font-size:clamp(2.4rem,5.4vw,4.6rem);font-weight:800;letter-spacing:-.04em;line-height:.95}
+.pf p{margin-top:12px;opacity:.85;max-width:24em}
+@media(max-width:760px){.pair{grid-template-columns:1fr}.pf:nth-child(2){margin-top:20px}}
+.tabs{display:flex;margin-bottom:14px;margin-right:14px}
+.tab{flex:1;padding:12px 10px;border:2px solid var(--ink);margin-left:-2px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:background .25s,color .25s}
+.tab:first-child{margin-left:0}
+.tab.on{background:var(--ink);color:var(--krem)}
+.evc{padding-top:6px;margin-bottom:22px}
+.evc h3{font-size:1.7rem;font-style:italic;font-weight:700;letter-spacing:-.02em;margin-bottom:4px}
+.rs{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(34px,6vw,100px);align-items:start}
+.f{display:grid;gap:28px}
+fieldset{border:0}
+.fld{display:grid;gap:8px}
+.fld label,.fld legend{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+.fld input[type=text],.fld select,.fld textarea{background:transparent;border:0;border-bottom:2px solid rgba(239,227,200,.6);color:var(--krem);padding:10px 0;font:inherit;font-size:1.15rem;border-radius:0;outline:none;width:100%;transition:border-color .3s}
+.fld input::placeholder,.fld textarea::placeholder{color:rgba(239,227,200,.5)}
+.fld select option{color:#111}
+.fld textarea{resize:vertical;min-height:110px}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-bottom-color:var(--kuning)}
+.seg{display:flex;border:2px solid var(--krem)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{flex:1;text-align:center;padding:14px 10px;cursor:pointer;transition:background .25s,color .25s}
+.seg input:checked+label{background:var(--kuning);color:var(--ink)}
+.seg input:focus-visible+label{outline:3px solid var(--kuning);outline-offset:2px}
+.rmsg{margin-top:14px;min-height:1.2em;color:var(--kuning)}
+@media(max-width:860px){.rs{grid-template-columns:minmax(0,1fr)}}
+.banks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.bk{border:2px solid var(--ink);padding:24px;display:grid;gap:6px;background:var(--krem);box-shadow:10px 10px 0 var(--bata);margin-right:10px;margin-bottom:10px}
+.bk b{font-size:1.5rem;font-style:italic}
+.bk .no{font-family:var(--mono);font-size:1.15rem;letter-spacing:.08em}
+.bk .go{margin-top:12px;justify-self:start}
+
 /* ---- footer ---- */
 footer{background:var(--bata);color:var(--krem);padding:0 0 130px;overflow:hidden}
 footer .wrap{padding-top:clamp(60px,9vw,120px)}
@@ -323,27 +370,28 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
 <div id="tenun">
   <div class="bands" id="bands"></div>
   <div class="plate0">
-    <span class="mono">Ranah Minangkabau</span>
-    <h1>Salamaik<br><em>datang.</em></h1>
-    <p>Masuklah. Ada busana, falsafah, rumah gadang, dan bunyi talempong yang menunggu di dalam. Nyalakan suara.</p>
-    <button class="go" id="openBtn">Masuak <span>→</span></button>
+    <span class="mono">Undangan Pernikahan</span>
+    <h1><span data-nama="wanita">Anak Daro</span> <em>&amp;</em> <span data-nama="pria">Marapulai</span></h1>
+    <p class="to">Kepada Yth.<br><b id="guest">Tamu Undangan</b></p>
+    <p>Dengan penuh hormat, kami mengundang Anda untuk hadir dan memberikan doa restu.</p>
+    <button class="go" id="openBtn">Buka Undangan <span>→</span></button>
   </div>
 </div>
 
 <nav>
   <div class="wrap mono">
-    <a href="#home">Ranah Minang</a>
-    <div class="links"><a href="#galeri">Gambar</a><a href="#busana">Busana</a><a href="#falsafah">Falsafah</a><a href="#marawa">Marawa</a><a href="#rumah">Rumah</a><a href="#bunyi">Bunyi</a><a href="#acara">Acara</a></div>
+    <a href="#home" id="brand">Undangan</a>
+    <div class="links"><a href="#mempelai">Mempelai</a><a href="#galeri">Momen</a><a href="#acara">Acara</a><a href="#rsvp">RSVP</a><a href="#adat">Adat</a></div>
     <button class="burger mono" id="burger">Menu</button>
   </div>
 </nav>
-<div id="menu"><a href="#galeri">Gambar</a><a href="#busana">Busana</a><a href="#falsafah">Falsafah</a><a href="#marawa">Marawa</a><a href="#rumah">Rumah</a><a href="#bunyi">Bunyi</a><a href="#acara">Acara</a></div>
+<div id="menu"><a href="#mempelai">Mempelai</a><a href="#galeri">Momen</a><a href="#acara">Acara</a><a href="#rsvp">RSVP</a><a href="#adat">Adat</a></div>
 
 <main>
 <!-- HERO -->
 <section id="home">
   <div class="wrap hero">
-    <h1 class="h-title"><span class="ln"><span>Salamaik</span></span><span class="ln l2"><span>datang</span></span></h1>
+    <h1 class="h-title"><span class="ln"><span data-nama="wanita">Anak Daro</span></span><span class="ln l2"><span><i class="amp">&amp;</i> <span data-nama="pria">Marapulai</span></span></span></h1>
     <figure class="house">
       <svg class="roof" viewBox="0 0 600 175" aria-hidden="true"><path class="rp" id="heroRoof" pathLength="1"/><rect x="0" y="162" width="600" height="8" fill="#f0b323"/></svg>
       <div class="wall"><img src="assets/pasangan-selamat-datang.jpg" alt="Anak daro dan marapulai berbusana adat marun dan emas menyambut tamu" fetchpriority="high"></div>
@@ -351,8 +399,8 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
       <div class="ground"></div>
     </figure>
     <div class="h-meta fade">
-      <span class="mono" style="color:var(--kuning)">Sumatera Barat · Ranah Minangkabau</span>
-      <p>Negeri yang adatnya ditenun, bukan hanya ditulis. Di sini dipajang busana, falsafah, rumah, dan bunyi dari tanah Minang.</p>
+      <span class="mono" style="color:var(--kuning)" id="heroMeta">Undangan Pernikahan</span>
+      <p>Dengan penuh syukur, kami mengundang Anda untuk hadir dan memberikan doa restu di hari pernikahan kami.</p>
       <a class="mini mono" href="#acara">Acara berikutnya · <b id="miniCd">—</b></a>
       <div class="scroll mono"><i></i>Gulir</div>
     </div>
@@ -362,12 +410,46 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
 
 <div class="ticker" aria-hidden="true"><div class="tk" id="tk"></div></div>
 
+<!-- SALAM -->
+<section id="salam" class="sec cream">
+  <div class="wrap narrow">
+    <span class="mono ctr rv">Bismillahirrahmanirrahim</span>
+    <blockquote class="ayat rv">“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang.”</blockquote>
+    <span class="mono ctr rv" style="opacity:.7">QS. Ar-Rum: 21</span>
+    <p class="salam rv">Assalamu’alaikum Warahmatullahi Wabarakatuh.<br>Dengan memohon rahmat dan ridha Allah SWT, kami bermaksud menyelenggarakan pernikahan putra-putri kami, dan dengan hormat mengundang Bapak/Ibu/Saudara/i untuk hadir.</p>
+  </div>
+</section>
+
+<!-- MEMPELAI -->
+<section id="mempelai" class="sec">
+  <div class="wrap">
+    <header class="sh">
+      <span class="mono" style="color:var(--kuning)">Mempelai</span>
+      <h2 class="h2 rv"><span class="ln"><span>Dua insan,</span></span><span class="ln"><span><em>satu niat.</em></span></span></h2>
+    </header>
+    <div class="pair">
+      <article class="pf rv">
+        <figure><img loading="lazy" src="assets/pengantin-wanita.jpg" alt="Mempelai wanita" style="object-position:50% 22%"></figure>
+        <span class="mono role">Anak Daro</span>
+        <h3 data-nama="wanita">Anak Daro</h3>
+        <p data-ortu="wanita"></p>
+      </article>
+      <article class="pf rv" style="--dl:.15s">
+        <figure><img loading="lazy" src="assets/pengantin-pria.jpg" alt="Mempelai pria" style="object-position:50% 20%"></figure>
+        <span class="mono role">Marapulai</span>
+        <h3 data-nama="pria">Marapulai</h3>
+        <p data-ortu="pria"></p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <!-- GALERI -->
 <section id="galeri" class="pin">
   <div class="sticky">
     <div class="track" id="track">
       <div class="gintro">
-        <span class="mono" style="color:var(--kuning)">Bab 01 — Gambar</span>
+        <span class="mono" style="color:var(--kuning)">Momen</span>
         <h2 class="h2"><span class="ln"><span>Beludru,</span></span><span class="ln"><span><em>benang emas.</em></span></span></h2>
         <p>Suntiang yang bergetar tiap melangkah, sulaman yang dikerjakan helai demi helai. Empat potret dari pelaminan. Gulir ke bawah untuk berjalan di sepanjang dindingnya.</p>
       </div>
@@ -381,11 +463,88 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
   </div>
 </section>
 
+<!-- ACARA -->
+<section id="acara" class="sec cream">
+  <div class="wrap">
+    <header class="sh">
+      <span class="mono">Acara</span>
+      <h2 class="h2 rv"><span class="ln"><span>Sampai</span></span><span class="ln"><span><em>basuo.</em></span></span></h2>
+      <p class="sub rv">Menghitung hari menuju hari bahagia kami. Kehadiran dan doa restu Anda adalah kehormatan bagi kami.</p>
+    </header>
+    <div class="ac">
+      <div>
+        <div class="cd" id="cd" role="timer" aria-label="Hitung mundur menuju acara">
+          <div class="cell rv"><span class="num"><span class="dg" data-u="d"></span></span><span class="mono">Hari</span></div>
+          <div class="cell rv" style="--dl:.08s"><span class="num"><span class="dg" data-u="h"></span></span><span class="mono">Jam</span></div>
+          <div class="cell rv" style="--dl:.16s"><span class="num"><span class="dg" data-u="m"></span></span><span class="mono">Menit</span></div>
+          <div class="cell rv" style="--dl:.24s"><span class="num"><span class="dg" data-u="s"></span></span><span class="mono">Detik</span></div>
+        </div>
+        <div class="cyc rv"><div class="mono"><span>Menuju hari H</span><span id="cycPct">0%</span></div><div class="trk"><i id="cycBar"></i></div></div>
+        <div id="evList"></div>
+        <div class="btns rv">
+          <a class="go" id="mapOpen" target="_blank" rel="noopener">Buka di Maps <span>↗</span></a>
+          <a class="go ghost" id="mapDir" target="_blank" rel="noopener">Petunjuk arah</a>
+          <button class="go ghost" id="icsBtn">Simpan ke kalender</button>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="tabs" id="tabs"></div>
+        <figure class="map"><div class="chip mono">Lokasi acara</div><iframe id="mapFrame" title="Peta lokasi acara" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp" class="sec red">
+  <div class="wrap rs">
+    <div>
+      <header class="sh" style="margin-bottom:0">
+        <span class="mono">Konfirmasi</span>
+        <h2 class="h2 rv"><span class="ln"><span>Hadir</span></span><span class="ln"><span><em>bersama kami?</em></span></span></h2>
+        <p class="sub rv">Mohon konfirmasi kehadiran dan sampaikan ucapan atau doa. Pesan akan terkirim langsung ke WhatsApp kami.</p>
+      </header>
+    </div>
+    <form class="f rv" id="rsvpForm" autocomplete="off">
+      <div class="fld"><label for="rNama">Nama</label><input type="text" id="rNama" required placeholder="Nama lengkap"></div>
+      <fieldset class="fld"><legend>Kehadiran</legend>
+        <div class="seg"><input type="radio" name="hadir" id="h1" value="Hadir" checked><label for="h1">Insya Allah hadir</label><input type="radio" name="hadir" id="h2" value="Berhalangan hadir"><label for="h2">Berhalangan</label></div>
+      </fieldset>
+      <div class="fld"><label for="rJml">Jumlah tamu</label><select id="rJml"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="fld"><label for="rMsg">Ucapan &amp; doa</label><textarea id="rMsg" placeholder="Tulis ucapan untuk mempelai"></textarea></div>
+      <div><button class="go y" type="submit">Kirim lewat WhatsApp <span>→</span></button><p class="mono rmsg" id="rMsgOut" role="status"></p></div>
+    </form>
+  </div>
+</section>
+
+<!-- AMPLOP DIGITAL -->
+<section id="amplop" class="sec cream">
+  <div class="wrap">
+    <header class="sh">
+      <span class="mono">Amplop digital</span>
+      <h2 class="h2 rv"><span class="ln"><span>Tanda</span></span><span class="ln"><span><em>kasih.</em></span></span></h2>
+      <p class="sub rv">Doa restu Anda sudah sangat berarti. Bila ingin memberikan tanda kasih, dapat melalui rekening berikut.</p>
+    </header>
+    <div class="banks" id="banks"></div>
+  </div>
+</section>
+
+<!-- ADAT -->
+<section id="adat" class="sec" style="padding-bottom:clamp(40px,6vw,70px)">
+  <div class="wrap">
+    <header class="sh" style="margin-bottom:0">
+      <span class="mono" style="color:var(--kuning)">Lampiran</span>
+      <h2 class="h2 rv"><span class="ln"><span>Mengenal</span></span><span class="ln"><span><em>adat kami.</em></span></span></h2>
+      <p class="sub rv">Pernikahan ini dirangkai dengan adat Minangkabau. Berikut sekilas busana, falsafah, panji, rumah, dan bunyi yang menyertainya.</p>
+    </header>
+  </div>
+</section>
+
 <!-- BUSANA -->
 <section id="busana" class="sec cream">
   <div class="wrap">
     <header class="sh">
-      <span class="mono">Bab 02 — Pakaian adat</span>
+      <span class="mono">Pakaian adat</span>
       <h2 class="h2 rv"><span class="ln"><span>Busana, <em>satu</em></span></span><span class="ln"><span>per satu.</span></span></h2>
       <p class="sub rv">Setiap perhiasan punya nama. Arahkan kursor atau ketuk angka pada foto, atau pilih namanya dari daftar.</p>
     </header>
@@ -422,7 +581,7 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
 <section id="falsafah" class="sec red">
   <div class="wrap">
     <header class="sh">
-      <span class="mono">Bab 03 — Pegangan hidup</span>
+      <span class="mono">Pegangan hidup</span>
       <h2 class="h2 rv"><span class="ln"><span>Adat yang</span></span><span class="ln"><span><em>diucapkan.</em></span></span></h2>
       <p class="sub rv">Minangkabau menyimpan hukumnya dalam pepatah. Enam di antaranya.</p>
     </header>
@@ -450,7 +609,7 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
   <div class="wrap mw">
     <div>
       <header class="sh" style="margin-bottom:0">
-        <span class="mono" style="color:var(--kuning)">Bab 04 — Panji</span>
+        <span class="mono" style="color:var(--kuning)">Panji</span>
         <h2 class="h2 rv"><span class="ln"><span>Marawa,</span></span><span class="ln"><span><em>tiga warna.</em></span></span></h2>
         <p class="sub rv">Arahkan kursor atau ketuk satu warna untuk menyorotnya di bendera.</p>
       </header>
@@ -469,7 +628,7 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
 <section id="rumah" class="sec cream">
   <div class="wrap">
     <header class="sh">
-      <span class="mono">Bab 05 — Arsitektur</span>
+      <span class="mono">Arsitektur</span>
       <h2 class="h2 rv"><span class="ln"><span>Rumah</span></span><span class="ln"><span><em>gadang.</em></span></span></h2>
       <p class="sub rv">Gulir pelan-pelan. Rumahnya digambar mengikuti gerak jari Anda.</p>
     </header>
@@ -499,7 +658,7 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
 <section id="bunyi" class="sec">
   <div class="wrap">
     <header class="sh">
-      <span class="mono" style="color:var(--kuning)">Bab 06 — Bunyi</span>
+      <span class="mono" style="color:var(--kuning)">Bunyi</span>
       <h2 class="h2 rv"><span class="ln"><span>Pukul</span></span><span class="ln"><span><em>talempong.</em></span></span></h2>
       <p class="sub rv">Gong-gong perunggu kecil, dipukul bergantian hingga jadi melodi. Ketuk gongnya, atau tekan angka 1–5 di keyboard.</p>
     </header>
@@ -515,48 +674,15 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
     </div>
   </div>
 </section>
-<!-- ACARA -->
-<section id="acara" class="sec cream">
-  <div class="wrap">
-    <header class="sh">
-      <span class="mono">Bab 07 — Acara</span>
-      <h2 class="h2 rv"><span class="ln"><span>Sampai</span></span><span class="ln"><span><em>basuo.</em></span></span></h2>
-      <p class="sub rv">Hitung mundur menuju pertemuan berikutnya. Begitu waktunya habis, penghitung otomatis mulai lagi dari tujuh hari.</p>
-    </header>
-    <div class="ac">
-      <div>
-        <div class="cd" id="cd" role="timer" aria-label="Hitung mundur acara">
-          <div class="cell rv"><span class="num"><span class="dg" data-u="d"></span></span><span class="mono">Hari</span></div>
-          <div class="cell rv" style="--dl:.08s"><span class="num"><span class="dg" data-u="h"></span></span><span class="mono">Jam</span></div>
-          <div class="cell rv" style="--dl:.16s"><span class="num"><span class="dg" data-u="m"></span></span><span class="mono">Menit</span></div>
-          <div class="cell rv" style="--dl:.24s"><span class="num"><span class="dg" data-u="s"></span></span><span class="mono">Detik</span></div>
-        </div>
-        <div class="cyc rv"><div class="mono"><span>Siklus <span id="cycLen">7</span> hari</span><span id="cycPct">0%</span></div><div class="trk"><i id="cycBar"></i></div></div>
-        <dl class="det rv">
-          <div><dt class="mono">Tanggal</dt><dd id="evDate">—</dd></div>
-          <div><dt class="mono">Waktu</dt><dd id="evTime">—</dd></div>
-          <div><dt class="mono">Tempat</dt><dd id="evPlace">—</dd></div>
-          <div><dt class="mono">Alamat</dt><dd id="evAddr">—</dd></div>
-        </dl>
-        <div class="btns rv">
-          <a class="go" id="mapOpen" target="_blank" rel="noopener">Buka di Maps <span>↗</span></a>
-          <a class="go ghost" id="mapDir" target="_blank" rel="noopener">Petunjuk arah</a>
-          <button class="go ghost" id="icsBtn">Simpan ke kalender</button>
-        </div>
-      </div>
-      <figure class="map rv"><div class="chip mono">Lokasi acara</div><iframe id="mapFrame" title="Peta lokasi acara" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></figure>
-    </div>
-  </div>
-</section>
 </main>
 
 <footer>
   <svg class="pr" data-n="36" aria-hidden="true"></svg>
   <div class="wrap">
-    <span class="mono">Ranah Minangkabau</span>
+    <span class="mono">Wassalamu’alaikum Warahmatullahi Wabarakatuh</span>
     <p class="big rv"><span class="ln"><span>Mang<em>kasih.</em></span></span></p>
     <div class="cols2">
-      <p>Terima kasih sudah singgah. <em>Dima bumi dipijak, disinan langik dijunjuang.</em></p>
+      <p>Atas kehadiran dan doa restu Bapak/Ibu/Saudara/i, kami ucapkan terima kasih. <em>Kami yang berbahagia,</em><br><b><span data-nama="wanita">Anak Daro</span> &amp; <span data-nama="pria">Marapulai</span></b></p>
       <span class="mono">Adat salingka nagari</span>
     </div>
   </div>
@@ -573,17 +699,24 @@ body.opened #player{display:flex;animation:fadein .6s 2.6s both}
 
 <script>
 /* =====  ATUR DI SINI  =====
-   anchor   : waktu mulai acara pertama (format ISO, zona WIB = +07:00)
-   cycleDays: panjang siklus hitung mundur (hari). Habis -> otomatis mulai lagi.
-   tempat/alamat/peta: nama tempat, alamat tampilan, dan kata kunci pencarian Google Maps */
-const ACARA = {
-  anchor: '2026-11-21T10:00:00+07:00',
-  cycleDays: 7,
-  durasiJam: 3,
-  judul: 'Acara — Ranah Minang',
-  tempat: 'Istano Basa Pagaruyung',
-  alamat: 'Jl. Sutan Alam Bagagarsyah, Pagaruyung, Kec. Tanjung Emas, Kab. Tanah Datar, Sumatera Barat',
-  peta: 'Istano Basa Pagaruyung, Tanah Datar, Sumatera Barat'
+   Semua data undangan ada di blok ini. Ganti nama, jadwal, tempat, dan nomor WhatsApp.
+   mulai    : waktu mulai acara pertama (ISO, WIB = +07:00)
+   ulangHari: hitung mundur diulang tiap N hari setelah habis. Isi 0 bila ingin berhenti di hari H.
+   acara    : daftar acara. offsetJam = selisih jam dari "mulai".
+   whatsapp : nomor tujuan RSVP, format 628xxxxxxxxxx (tanpa + dan spasi)
+   rekening : daftar rekening amplop digital. Kosongkan [] untuk menyembunyikan bagian ini.
+   Tamu bisa dipersonalisasi lewat tautan: index.html?to=Nama+Tamu */
+const UNDANGAN = {
+  wanita: { nama: 'Anak Daro', orangtua: 'Putri dari Bapak (nama ayah) & Ibu (nama ibu)' },
+  pria:   { nama: 'Marapulai', orangtua: 'Putra dari Bapak (nama ayah) & Ibu (nama ibu)' },
+  mulai: '2026-11-21T09:00:00+07:00',
+  ulangHari: 7,
+  acara: [
+    { judul: 'Akad Nikah', offsetJam: 0, durasiJam: 1.5, tempat: 'Istano Basa Pagaruyung', alamat: 'Jl. Sutan Alam Bagagarsyah, Pagaruyung, Kec. Tanjung Emas, Kab. Tanah Datar, Sumatera Barat', peta: 'Istano Basa Pagaruyung, Tanah Datar, Sumatera Barat' },
+    { judul: 'Resepsi', offsetJam: 2, durasiJam: 3, tempat: 'Istano Basa Pagaruyung', alamat: 'Jl. Sutan Alam Bagagarsyah, Pagaruyung, Kec. Tanjung Emas, Kab. Tanah Datar, Sumatera Barat', peta: 'Istano Basa Pagaruyung, Tanah Datar, Sumatera Barat' }
+  ],
+  whatsapp: '',
+  rekening: [] // contoh: [{ bank: 'BCA', no: '1234567890', an: 'Nama Pemilik' }]
 };
 (() => {
   const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -749,16 +882,37 @@ const ACARA = {
   $$('.rows .row').forEach((r, i) => r.style.setProperty('--dl', (i * .07) + 's'));
   $$('.seni .r').forEach((r, i) => r.style.setProperty('--dl', (i * .08) + 's'));
 
-  /* ---- acara: hitung mundur siklus ---- */
-  const CYC = ACARA.cycleDays * 864e5, A0 = Date.parse(ACARA.anchor);
-  const nextStart = now => now <= A0 ? A0 : A0 + Math.ceil((now - A0) / CYC) * CYC;
+  /* ---- undangan: data, tamu, nama ---- */
+  const U = UNDANGAN, A0 = Date.parse(U.mulai), CYC = U.ulangHari * 864e5, loop = U.ulangHari > 0;
+  const nextStart = now => (!loop || now <= A0) ? A0 : A0 + Math.ceil((now - A0) / CYC) * CYC;
   const pad = n => String(n).padStart(2, '0');
-  const q = encodeURIComponent(ACARA.peta);
-  $('#mapOpen').href = 'https://www.google.com/maps/search/?api=1&query=' + q;
-  $('#mapDir').href = 'https://www.google.com/maps/dir/?api=1&destination=' + q;
-  $('#mapFrame').src = 'https://www.google.com/maps?q=' + q + '&z=15&output=embed';
-  $('#cycLen').textContent = ACARA.cycleDays;
-  $('#evPlace').textContent = ACARA.tempat; $('#evAddr').textContent = ACARA.alamat;
+  $$('[data-nama]').forEach(e => e.textContent = U[e.dataset.nama].nama);
+  $$('[data-ortu]').forEach(e => e.textContent = U[e.dataset.ortu].orangtua);
+  const guest = (new URLSearchParams(location.search).get('to') || '').trim();
+  $('#guest').textContent = guest || 'Tamu Undangan'; $('#rNama').value = guest;
+  document.title = `Undangan Pernikahan — ${U.wanita.nama} & ${U.pria.nama}`;
+  function fitHero() {
+    const h = $('.h-title'), ls = $$('.h-title .ln > span'); ls.forEach(l => l.style.display = 'inline-block'); h.style.fontSize = '100px';
+    const w = Math.max(...ls.map(l => l.offsetWidth)); ls.forEach(l => l.style.display = '');
+    const hr = $('.house').getBoundingClientRect(), tl = h.getBoundingClientRect().left, avail = innerWidth > 860 ? Math.max(260, hr.left - tl - 36) : innerWidth - 40, mx = innerWidth > 860 ? 216 : 150;
+    h.style.fontSize = Math.max(44, Math.min(mx, avail / w * 100)) + 'px';
+  }
+  fitHero(); addEventListener('resize', fitHero); if (document.fonts) document.fonts.ready.then(fitHero);
+
+  /* ---- acara: hitung mundur, daftar acara, peta ---- */
+  const fDate = new Intl.DateTimeFormat('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' });
+  const fTime = new Intl.DateTimeFormat('id-ID', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' });
+  const tt = d => fTime.format(d).replace('.', ':');
+  const enc = encodeURIComponent; let act = 0;
+  $('#tabs').innerHTML = U.acara.map((e, i) => `<button class="tab${i ? '' : ' on'}" data-i="${i}">${e.judul}</button>`).join('');
+  function setMap(i) {
+    act = i; const e = U.acara[i]; const q = enc(e.peta);
+    $$('.tab').forEach(t => t.classList.toggle('on', +t.dataset.i === i));
+    $('#mapOpen').href = 'https://www.google.com/maps/search/?api=1&query=' + q;
+    $('#mapDir').href = 'https://www.google.com/maps/dir/?api=1&destination=' + q;
+    const f = $('#mapFrame'), src = 'https://www.google.com/maps?q=' + q + '&z=15&output=embed'; if (f.getAttribute('src') !== src) f.src = src;
+  }
+  $$('.tab').forEach(t => t.addEventListener('click', () => setMap(+t.dataset.i))); setMap(0);
   const dgs = {}; $$('.dg').forEach(e => dgs[e.dataset.u] = e);
   function setDg(el, v) {
     if (el.dataset.v === v) return; const first = !el.dataset.v; el.dataset.v = v;
@@ -766,29 +920,47 @@ const ACARA = {
     if (!first) { n.className = 'n'; el.querySelectorAll('span').forEach(o => { o.className = 'o'; setTimeout(() => o.remove(), 600); }); }
     el.appendChild(n);
   }
-  const fDate = new Intl.DateTimeFormat('id-ID', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' });
-  const fTime = new Intl.DateTimeFormat('id-ID', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Jakarta' });
   let lastEv = 0;
+  function renderEvents(ns) {
+    $('#evList').innerHTML = U.acara.map(e => {
+      const st = new Date(ns + e.offsetJam * 36e5), en = new Date(st.getTime() + e.durasiJam * 36e5);
+      return `<div class="evc rv in"><h3>${e.judul}</h3><dl class="det"><div><dt class="mono">Tanggal</dt><dd>${fDate.format(st)}</dd></div><div><dt class="mono">Waktu</dt><dd>${tt(st)} – ${tt(en)} WIB</dd></div><div><dt class="mono">Tempat</dt><dd>${e.tempat}<small>${e.alamat}</small></dd></div></dl></div>`;
+    }).join('');
+    $('#heroMeta').textContent = `${fDate.format(new Date(ns))} · ${U.acara[0].tempat}`;
+  }
   function cdTick() {
     const now = Date.now(), ns = nextStart(now), diff = Math.max(0, ns - now), s = Math.floor(diff / 1000);
     const d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), sc = s % 60;
     setDg(dgs.d, pad(d)); setDg(dgs.h, pad(h)); setDg(dgs.m, pad(m)); setDg(dgs.s, pad(sc));
-    const pct = clamp(1 - diff / CYC); $('#cycBar').style.transform = `scaleX(${pct})`; $('#cycPct').textContent = Math.round(pct * 100) + '%';
+    const pct = loop ? clamp(1 - diff / CYC) : (now >= A0 ? 1 : clamp(now / A0));
+    $('#cycBar').style.transform = `scaleX(${pct})`; $('#cycPct').textContent = Math.round(pct * 100) + '%';
     $('#miniCd').textContent = `${d} hari ${pad(h)}:${pad(m)}:${pad(sc)}`;
-    if (ns !== lastEv) {
-      lastEv = ns; const dt = new Date(ns);
-      $('#evDate').textContent = fDate.format(dt);
-      const end = new Date(ns + ACARA.durasiJam * 36e5);
-      $('#evTime').innerHTML = `${fTime.format(dt).replace('.', ':')} WIB <small>sampai ${fTime.format(end).replace('.', ':')} WIB · diulang tiap ${ACARA.cycleDays} hari</small>`;
-    }
+    if (ns !== lastEv) { lastEv = ns; renderEvents(ns); }
   }
   cdTick(); setInterval(cdTick, 250);
+
+  /* ---- kalender (.ics) ---- */
   $('#icsBtn').addEventListener('click', () => {
-    const st = nextStart(Date.now()), en = st + ACARA.durasiJam * 36e5, z = t => new Date(t).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
-    const txt = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Ranah Minang//ID', 'BEGIN:VEVENT', 'UID:' + st + '@ranah-minang', 'DTSTAMP:' + z(Date.now()), 'DTSTART:' + z(st), 'DTEND:' + z(en),
-      'RRULE:FREQ=DAILY;INTERVAL=' + ACARA.cycleDays, 'SUMMARY:' + ACARA.judul, 'LOCATION:' + (ACARA.tempat + ', ' + ACARA.alamat).replace(/,/g, '\\,'), 'END:VEVENT', 'END:VCALENDAR'].join('\r\n');
-    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt], { type: 'text/calendar' })); a.download = 'acara-ranah-minang.ics'; a.click();
+    const base = nextStart(Date.now()), z = t => new Date(t).toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, ''), esc = x => x.replace(/,/g, '\\,');
+    const ev = U.acara.map((e, i) => { const st = base + e.offsetJam * 36e5, en = st + e.durasiJam * 36e5; return ['BEGIN:VEVENT', 'UID:' + st + '-' + i + '@undangan', 'DTSTAMP:' + z(Date.now()), 'DTSTART:' + z(st), 'DTEND:' + z(en), loop ? 'RRULE:FREQ=DAILY;INTERVAL=' + U.ulangHari : '', 'SUMMARY:' + e.judul + ' — ' + U.wanita.nama + ' & ' + U.pria.nama, 'LOCATION:' + esc(e.tempat + ', ' + e.alamat), 'END:VEVENT'].filter(Boolean).join('\r\n'); });
+    const txt = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Undangan//ID'].concat(ev, ['END:VCALENDAR']).join('\r\n');
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt], { type: 'text/calendar' })); a.download = 'undangan-pernikahan.ics'; a.click();
   });
+
+  /* ---- RSVP via WhatsApp ---- */
+  $('#rsvpForm').addEventListener('submit', e => {
+    e.preventDefault(); const out = $('#rMsgOut');
+    if (!U.whatsapp) { out.textContent = 'Nomor WhatsApp belum diatur.'; return; }
+    const hadir = $('input[name=hadir]:checked').value, ps = $('#rMsg').value.trim();
+    const text = `Assalamu’alaikum. Saya ${$('#rNama').value.trim()} mengonfirmasi: ${hadir} (jumlah tamu: ${$('#rJml').value}) pada pernikahan ${U.wanita.nama} & ${U.pria.nama}.` + (ps ? `\n\nUcapan: ${ps}` : '');
+    out.textContent = 'Membuka WhatsApp…'; window.open('https://wa.me/' + U.whatsapp + '?text=' + enc(text), '_blank', 'noopener');
+  });
+
+  /* ---- amplop digital ---- */
+  if (!U.rekening.length) { $('#amplop').remove(); } else {
+    $('#banks').innerHTML = U.rekening.map((r, i) => `<div class="bk rv in"><span class="mono">${r.bank}</span><span class="no">${r.no}</span><b>a.n. ${r.an}</b><button class="go ghost" data-c="${i}">Salin nomor</button></div>`).join('');
+    $$('[data-c]').forEach(b => b.addEventListener('click', () => { const v = U.rekening[+b.dataset.c].no; (navigator.clipboard ? navigator.clipboard.writeText(v) : Promise.reject()).then(() => b.textContent = 'Tersalin ✓').catch(() => b.textContent = v); }));
+  }
 })();
 </script>
 </body>
