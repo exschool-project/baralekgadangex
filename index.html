@@ -1,1 +1,612 @@
-# baralekgadangex
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Salamaik Datang — Ranah Minang</title>
+<meta name="description" content="Busana adat, falsafah, rumah gadang, marawa, dan talempong dari ranah Minangkabau.">
+<meta name="theme-color" content="#0f0b0a">
+<meta property="og:title" content="Salamaik Datang — Ranah Minang">
+<meta property="og:image" content="assets/pasangan-selamat-datang.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230f0b0a'/%3E%3Cpath d='M4 46C9 36 14 24 18 10 19 26 24 34 32 38 40 34 45 26 46 10 50 24 55 36 60 46Z' fill='%23f0b323'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0f0b0a; --coal:#1a1210; --bata:#a8231b; --kuning:#f0b323; --emas:#dc9d14; --krem:#efe3c8;
+  --serif:'Fraunces',Georgia,'Times New Roman',serif; --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:var(--krem);font-family:var(--serif);font-size:clamp(17px,1.35vw,20px);line-height:1.55;overflow-x:hidden}
+body.lock{overflow:hidden;height:100svh}
+body::after{content:"";position:fixed;inset:0;z-index:300;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+.wrap{width:min(1240px,100% - 40px);margin-inline:auto}
+.sec{position:relative;padding:clamp(80px,12vw,160px) 0}
+.cream{background:var(--krem);color:var(--ink)}
+.red{background:var(--bata);color:var(--krem)}
+.yellow{background:var(--kuning);color:var(--ink)}
+
+/* ---- teks bertingkat ---- */
+.h2{font-weight:800;font-size:clamp(3.2rem,10vw,9rem);line-height:.88;letter-spacing:-.04em;font-variation-settings:'opsz' 144}
+.h2 em{font-weight:400;font-style:italic;letter-spacing:-.02em}
+.ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.ln>span{display:block;transform:translateY(110%);transition:transform 1.1s cubic-bezier(.2,.8,.2,1)}
+.in .ln>span,body.opened .hero .ln>span{transform:none}
+.ln:nth-child(2)>span{transition-delay:.12s}
+.sh{display:grid;gap:22px;margin-bottom:clamp(40px,6vw,80px)}
+.sh .mono{display:flex;gap:14px;align-items:center}
+.sh .mono::before{content:"";width:36px;height:2px;background:currentColor}
+.sub{max-width:34em;font-size:1.1em}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:var(--dl,0s)}
+.rv.in{opacity:1;transform:none}
+
+/* ---- pucuak rabuang ---- */
+.pr{display:block;width:100%;height:clamp(18px,3vw,34px);color:var(--kuning)}
+.pr polygon{fill:currentColor;transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);transition:transform .8s cubic-bezier(.2,.9,.2,1);transition-delay:calc(var(--i)*28ms)}
+.pr.in polygon{transform:none}
+
+/* ---- loader tenun ---- */
+#tenun{position:fixed;inset:0;z-index:250;display:grid;place-items:center;overflow:hidden}
+#tenun .bands{position:absolute;inset:0;display:flex;flex-direction:column}
+#tenun .b{flex:1;transform:translateX(var(--from));animation:weave .9s cubic-bezier(.7,0,.2,1) forwards;animation-delay:calc(var(--i)*70ms)}
+@keyframes weave{to{transform:none}}
+#tenun.go .b{animation:none;transition:transform .9s cubic-bezier(.7,0,.2,1);transition-delay:calc(var(--i)*60ms);transform:translateX(calc(var(--from)*-1))}
+.plate0{position:relative;z-index:2;background:var(--krem);color:var(--ink);padding:clamp(24px,4vw,44px) clamp(26px,5vw,60px);text-align:left;max-width:min(560px,88vw);opacity:0;animation:fadein .6s 1s forwards;transition:opacity .4s,transform .6s}
+#tenun.go .plate0{opacity:0!important;transform:translateY(-20px);animation:none}
+@keyframes fadein{to{opacity:1}}
+.plate0 h1{font-weight:800;font-size:clamp(2.6rem,9vw,5rem);line-height:.9;letter-spacing:-.035em;margin:12px 0 18px}
+.plate0 h1 em{font-weight:400}
+.plate0 p{font-size:1rem;margin-bottom:22px}
+.go{display:inline-flex;align-items:center;gap:14px;padding:15px 26px;background:var(--ink);color:var(--krem);font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;transition:background .3s,transform .3s}
+.go:hover{background:var(--bata);transform:translateX(4px)}
+
+/* ---- nav ---- */
+nav{position:fixed;top:0;left:0;right:0;z-index:120;background:rgba(15,11,10,.94);color:var(--krem);padding:14px 0;border-bottom:1px solid rgba(239,227,200,.18)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center}
+nav a{text-decoration:none}
+.links{display:flex;gap:26px}
+.links a{position:relative;padding:4px 0}
+.links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .35s}
+.links a:hover::after{transform:scaleX(1);transform-origin:left}
+.burger{display:none}
+#menu{position:fixed;inset:0;z-index:110;background:var(--ink);padding:100px 24px 40px;display:flex;flex-direction:column;justify-content:center;gap:6px;transform:translateY(-100%);transition:transform .6s cubic-bezier(.7,0,.2,1)}
+#menu.show{transform:none}
+#menu a{font-size:clamp(2.4rem,11vw,4rem);font-weight:800;letter-spacing:-.03em;text-decoration:none;line-height:1.1}
+#menu a:hover{color:var(--kuning);font-style:italic}
+@media(max-width:860px){.links{display:none}.burger{display:block}}
+#bar{position:fixed;top:0;left:0;right:0;height:3px;z-index:130;background:var(--kuning);transform:scaleX(0);transform-origin:0 50%}
+
+/* ---- hero ---- */
+#home{position:relative;padding:110px 0 0;overflow:hidden;min-height:100svh;display:flex;flex-direction:column}
+.hero{position:relative;flex:1;display:grid;grid-template-columns:1fr minmax(300px,38vw);grid-template-rows:1fr auto;align-items:center;padding-bottom:50px}
+.h-title{grid-column:1/3;grid-row:1;font-weight:800;font-size:clamp(4rem,14.2vw,13.5rem);line-height:.84;letter-spacing:-.05em;font-variation-settings:'opsz' 144;position:relative;z-index:1}
+.h-title .l2{color:var(--kuning);font-weight:400;font-style:italic;letter-spacing:-.04em}
+.house{grid-column:2;grid-row:1;justify-self:end;width:min(470px,38vw);position:relative;z-index:2;margin-right:2vw}
+.roof{display:block;width:112%;margin-left:-6%;overflow:visible}
+.roof .rp{fill:transparent;stroke:var(--kuning);stroke-width:3;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:fill 1s 1.6s}
+body.opened .roof .rp{animation:draw 1.8s .5s cubic-bezier(.6,0,.2,1) forwards;fill:var(--bata)}
+@keyframes draw{to{stroke-dashoffset:0}}
+.wall{position:relative;aspect-ratio:1402/1122;overflow:hidden;clip-path:polygon(0 0,100% 0,95% 0,5% 0);transition:clip-path 1.4s 1.2s cubic-bezier(.7,0,.2,1)}
+body.opened .wall{clip-path:polygon(0 0,100% 0,95% 100%,5% 100%)}
+.wall img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.stilts{display:flex;justify-content:space-between;padding:0 9%;height:clamp(22px,3vw,36px)}
+.stilts i{width:5px;background:var(--kuning);transform:scaleY(0);transform-origin:top;transition:transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(2.2s + var(--i)*70ms)}
+body.opened .stilts i{transform:none}
+.ground{height:3px;background:var(--kuning);margin:0 -8%;transform:scaleX(0);transition:transform 1s 2.3s}
+body.opened .ground{transform:none}
+.h-meta{grid-column:1/2;grid-row:2;max-width:30em;display:grid;gap:16px;padding-top:30px;position:relative;z-index:3}
+.h-meta p{font-size:1.1em}
+.scroll{display:flex;align-items:center;gap:12px;color:var(--kuning)}
+.scroll i{width:1px;height:34px;background:currentColor;transform-origin:top;animation:drip 2s infinite}
+@keyframes drip{0%{transform:scaleY(0)}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+.hero .fade{opacity:0;transition:opacity 1s 2.4s}body.opened .hero .fade{opacity:1}
+@media(max-width:860px){
+  #home{padding-top:84px}
+  .hero{grid-template-columns:1fr;grid-template-rows:auto auto auto}
+  .house{grid-column:1;grid-row:1;justify-self:center;width:min(84vw,420px);margin:0 0 28px}
+  .h-title{grid-column:1;grid-row:2;font-size:clamp(3.6rem,19.5vw,9rem)}
+  .h-meta{grid-column:1;grid-row:3}
+}
+
+/* ---- galeri pinned ---- */
+#galeri{background:var(--coal);padding:0}
+.sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
+.track{flex:none;display:flex;align-items:center;gap:clamp(40px,7vw,120px);padding:0 8vw 0 6vw;will-change:transform}
+.gintro{flex:none;width:min(88vw,520px)}
+.gintro .h2{margin:20px 0}
+.fig{flex:none;position:relative;height:66svh;aspect-ratio:var(--ar);cursor:zoom-in}
+.fig:nth-of-type(even){transform:translateY(5svh)}
+.fig img{width:100%;height:100%;object-fit:cover}
+.fig figcaption{position:absolute;left:0;top:calc(100% + 14px);width:min(100%,380px);display:grid;gap:4px}
+.fig figcaption b{font-family:var(--serif);font-size:1.5rem;font-weight:600;font-style:italic;text-transform:none;letter-spacing:0}
+.fig figcaption span{color:rgba(239,227,200,.7);font-family:var(--serif);font-size:.95rem;text-transform:none;letter-spacing:0;font-weight:400}
+.fig .no{position:absolute;left:-14px;top:-14px;background:var(--kuning);color:var(--ink);padding:6px 10px;z-index:2}
+.gend{flex:none;width:30vw;color:var(--kuning)}
+.gctl{position:absolute;left:0;right:0;bottom:22px;display:flex;align-items:center;gap:16px;padding:0 6vw;z-index:3}
+.gctl .pg{flex:1;height:2px;background:rgba(239,227,200,.2)}
+.gctl .pg i{display:block;height:100%;background:var(--kuning);transform-origin:0 50%;transform:scaleX(0)}
+#lb{position:fixed;inset:0;z-index:260;background:rgba(15,11,10,.96);display:none;place-items:center;padding:20px}
+#lb.show{display:grid}
+#lb img{max-height:80vh;max-width:min(92vw,1100px);animation:zoom .5s cubic-bezier(.2,.8,.2,1)}
+@keyframes zoom{from{opacity:0;transform:scale(.94)}}
+#lb .cap{position:absolute;left:0;right:0;bottom:22px;text-align:center;color:var(--kuning)}
+#lb button{position:absolute;font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;padding:12px 14px;color:var(--krem)}
+#lb button:hover{color:var(--kuning)}
+#lb .x{top:16px;right:16px}#lb .pv{left:8px;top:50%}#lb .nx{right:8px;top:50%}
+
+/* ---- busana ---- */
+.plates{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px)}
+.pl .cap0{display:flex;justify-content:space-between;margin-bottom:16px;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.ph{position:relative;aspect-ratio:var(--ar);box-shadow:12px 12px 0 var(--bata)}
+.ph img{width:100%;height:100%;object-fit:cover}
+.mk{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:var(--bata);color:var(--krem);border:2px solid var(--krem);font-family:var(--mono);font-size:.78rem;font-weight:500;display:grid;place-items:center;transition:transform .25s,background .25s,color .25s;z-index:2}
+.mk.on{background:var(--kuning);color:var(--ink);transform:scale(1.3)}
+.leg{list-style:none;margin-top:38px;display:grid}
+.leg li{display:grid;grid-template-columns:38px 1fr;gap:6px 12px;padding:14px 0;border-top:1px solid rgba(15,11,10,.25);cursor:pointer;transition:padding .3s,color .3s}
+.leg li:last-child{border-bottom:1px solid rgba(15,11,10,.25)}
+.leg li .n{font-family:var(--mono);font-size:.8rem;padding-top:6px}
+.leg li b{font-size:1.35rem;font-weight:700;font-style:italic;display:block;line-height:1.2}
+.leg li span{font-size:.98rem;opacity:.85}
+.leg li.on{padding-left:14px;color:var(--bata)}
+@media(max-width:860px){.plates{grid-template-columns:1fr}.ph{margin-right:12px}}
+
+/* ---- falsafah ---- */
+.rows{margin-top:10px}
+.row{position:relative;display:grid;grid-template-columns:70px 1.35fr 1fr;gap:26px;align-items:baseline;padding:28px 16px;border-top:1px solid rgba(239,227,200,.4);overflow:hidden;transition:color .4s}
+.row:last-child{border-bottom:1px solid rgba(239,227,200,.4)}
+.row::before{content:"";position:absolute;inset:0;background:var(--kuning);transform:scaleY(0);transform-origin:bottom;transition:transform .5s cubic-bezier(.7,0,.2,1)}
+.row>*{position:relative}
+.row:hover,.row.on{color:var(--ink)}
+.row:hover::before,.row.on::before{transform:none}
+.row h3{font-weight:600;font-style:italic;font-size:clamp(1.55rem,3.3vw,3rem);line-height:1.02;letter-spacing:-.025em}
+.row p{font-size:1rem}
+@media(max-width:860px){.row{grid-template-columns:44px 1fr;gap:8px 12px}.row p{grid-column:2}}
+.asal{margin-top:clamp(60px,9vw,120px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:end}
+.asal .big{font-size:clamp(2.6rem,8vw,7rem);font-weight:800;letter-spacing:-.045em;line-height:.92}
+.strike{position:relative;display:inline-block;opacity:.7}
+.strike::after{content:"";position:absolute;left:-2%;top:54%;height:.08em;width:104%;background:var(--kuning);transform:scaleX(0);transform-origin:left;transition:transform .9s .4s cubic-bezier(.7,0,.2,1)}
+.asal.in .strike::after{transform:none}
+.asal em{display:block;font-weight:400;opacity:0;transform:translateY(20px);transition:.9s 1.2s}
+.asal.in em{opacity:1;transform:none}
+@media(max-width:860px){.asal{grid-template-columns:1fr}}
+
+/* ---- rumah gadang ---- */
+.rg{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
+.rg svg{width:100%;height:auto;overflow:visible}
+.rg .d{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}
+.rg .f{transition:fill .8s}
+.rg.full .roofp{fill:var(--bata)}
+.rg.full .rangk{fill:var(--kuning)}
+.rg .lab{opacity:0;transition:opacity .6s}
+.rg.full .lab{opacity:1}
+.rg .lab circle{fill:var(--kuning);stroke:var(--ink);stroke-width:2}
+.rg .lab text{font:500 14px var(--mono);fill:var(--ink);text-anchor:middle}
+.rg ol{list-style:none;display:grid;gap:0}
+.rg li{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:18px 0;border-top:1px solid rgba(15,11,10,.25)}
+.rg li:last-child{border-bottom:1px solid rgba(15,11,10,.25)}
+.rg li i{font:500 .8rem var(--mono);font-style:normal;width:28px;height:28px;border-radius:50%;background:var(--kuning);border:2px solid var(--ink);display:grid;place-items:center}
+.rg li b{font-size:1.35rem;font-style:italic;font-weight:700;display:block}
+.rg li span{font-size:.98rem;opacity:.85}
+@media(max-width:860px){.rg{grid-template-columns:1fr}}
+
+/* ---- marawa ---- */
+.mw{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,110px);align-items:center}
+.flagbox{position:relative;padding-left:16px}
+.pole{position:absolute;left:0;top:-24px;bottom:-90px;width:10px;background:var(--ink)}
+.pole::before{content:"";position:absolute;top:-12px;left:-3px;width:16px;height:16px;border-radius:50%;background:var(--ink)}
+#flag{display:block;width:100%;height:auto}
+.cols{list-style:none;margin-top:28px;display:grid;gap:0}
+.cols li{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:16px 0;border-top:1px solid rgba(15,11,10,.4);align-items:start}
+.cols li:last-child{border-bottom:1px solid rgba(15,11,10,.4)}
+.cols i{width:34px;height:34px;border:2px solid var(--ink)}
+.cols b{font-size:1.3rem;font-style:italic;font-weight:700;display:block}
+.cols span{font-size:.98rem}
+.note{margin-top:14px;opacity:.75}
+@media(max-width:860px){.mw{grid-template-columns:1fr}}
+
+/* ---- bunyi ---- */
+.gongs{display:flex;justify-content:center;align-items:flex-end;gap:clamp(10px,2.4vw,34px);margin:clamp(40px,6vw,70px) 0 0;padding-bottom:10px;border-bottom:8px solid #3a2616;position:relative}
+.gong{position:relative;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#f0c35c 0 13%,#b8801c 14% 19%,#d7a02c 20% 56%,#a8741a 57% 60%,#cf972a 61% 100%);border:4px solid #6e4a14;transition:transform .12s;flex:none;margin-bottom:-4px}
+.gong:nth-child(1){width:clamp(60px,16vw,160px)}.gong:nth-child(2){width:clamp(56px,14.6vw,146px)}.gong:nth-child(3){width:clamp(52px,13.2vw,132px)}.gong:nth-child(4){width:clamp(48px,12vw,118px)}.gong:nth-child(5){width:clamp(44px,11vw,106px)}
+.gong::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--krem);opacity:0}
+.gong.hit{transform:scale(.94)}.gong.hit::after{animation:ring .8s ease-out}
+@keyframes ring{from{opacity:.9;transform:scale(1)}to{opacity:0;transform:scale(1.7)}}
+.glab{display:flex;justify-content:center;gap:clamp(10px,2.4vw,34px);margin-top:12px;color:var(--kuning)}
+.glab span{text-align:center}
+.glab span:nth-child(1){width:clamp(60px,16vw,160px)}.glab span:nth-child(2){width:clamp(56px,14.6vw,146px)}.glab span:nth-child(3){width:clamp(52px,13.2vw,132px)}.glab span:nth-child(4){width:clamp(48px,12vw,118px)}.glab span:nth-child(5){width:clamp(44px,11vw,106px)}
+.tools{margin-top:36px;display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap}
+.go.y{background:var(--kuning);color:var(--ink)}.go.y:hover{background:var(--krem)}
+.seni{margin-top:clamp(70px,10vw,130px)}
+.seni .r{display:grid;grid-template-columns:1fr 1.4fr;gap:26px;align-items:baseline;padding:22px 0;border-top:1px solid rgba(239,227,200,.3)}
+.seni .r:last-child{border-bottom:1px solid rgba(239,227,200,.3)}
+.seni h3{font-size:clamp(1.7rem,4vw,3.2rem);font-weight:700;font-style:italic;letter-spacing:-.03em;line-height:1}
+.seni p{opacity:.85;font-size:1rem}
+@media(max-width:700px){.seni .r{grid-template-columns:1fr;gap:6px}}
+
+/* ---- footer ---- */
+footer{background:var(--bata);color:var(--krem);padding:0 0 130px;overflow:hidden}
+footer .wrap{padding-top:clamp(60px,9vw,120px)}
+footer .big{font-weight:800;font-size:clamp(4rem,21vw,20rem);letter-spacing:-.06em;line-height:.8;margin:30px 0 40px;font-variation-settings:'opsz' 144}
+footer .big em{font-weight:400}
+footer .cols2{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-end}
+footer p{max-width:28em}
+footer .pr{color:var(--ink)}
+
+/* ---- player ---- */
+#player{position:fixed;z-index:140;left:max(14px,env(safe-area-inset-left));bottom:max(14px,env(safe-area-inset-bottom));display:none;align-items:center;gap:12px;background:var(--ink);color:var(--krem);border:1px solid rgba(239,227,200,.5);padding:8px 14px 8px 8px}
+body.opened #player{display:flex;animation:fadein .6s 2.6s both}
+#pp{width:40px;height:40px;background:var(--kuning);color:var(--ink);display:grid;place-items:center}
+#pp svg{width:16px;height:16px}#pp .pa{display:none}#player.on #pp .pa{display:block}#player.on #pp .pl{display:none}
+.pm{display:grid;gap:7px}
+.pm .t{display:flex;justify-content:space-between;gap:18px;font-size:.62rem}
+#seek{-webkit-appearance:none;appearance:none;height:3px;width:clamp(110px,22vw,190px);background:linear-gradient(90deg,var(--kuning) var(--p,0%),rgba(239,227,200,.25) var(--p,0%));outline:none}
+#seek::-webkit-slider-thumb{-webkit-appearance:none;width:10px;height:10px;background:var(--kuning);border-radius:0}
+#seek::-moz-range-thumb{width:10px;height:10px;background:var(--kuning);border:0;border-radius:0}
+.bars{display:flex;gap:2px;align-items:flex-end;height:16px}
+.bars i{width:3px;height:3px;background:var(--kuning)}
+#player.on .bars i{animation:eq 1s ease-in-out infinite;animation-delay:calc(var(--k)*-.2s)}
+@keyframes eq{0%,100%{height:3px}50%{height:16px}}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.rv,.ln>span{opacity:1;transform:none}}
+</style>
+</head>
+<body class="lock">
+<div id="bar"></div>
+
+<!-- tenun pembuka -->
+<div id="tenun">
+  <div class="bands" id="bands"></div>
+  <div class="plate0">
+    <span class="mono">Ranah Minangkabau</span>
+    <h1>Salamaik<br><em>datang.</em></h1>
+    <p>Masuklah. Ada busana, falsafah, rumah gadang, dan bunyi talempong yang menunggu di dalam. Nyalakan suara.</p>
+    <button class="go" id="openBtn">Masuak <span>→</span></button>
+  </div>
+</div>
+
+<nav>
+  <div class="wrap mono">
+    <a href="#home">Ranah Minang</a>
+    <div class="links"><a href="#galeri">Gambar</a><a href="#busana">Busana</a><a href="#falsafah">Falsafah</a><a href="#rumah">Rumah</a><a href="#marawa">Marawa</a><a href="#bunyi">Bunyi</a></div>
+    <button class="burger mono" id="burger">Menu</button>
+  </div>
+</nav>
+<div id="menu"><a href="#galeri">Gambar</a><a href="#busana">Busana</a><a href="#falsafah">Falsafah</a><a href="#rumah">Rumah</a><a href="#marawa">Marawa</a><a href="#bunyi">Bunyi</a></div>
+
+<main>
+<!-- HERO -->
+<section id="home">
+  <div class="wrap hero">
+    <h1 class="h-title"><span class="ln"><span>Salamaik</span></span><span class="ln l2"><span>datang</span></span></h1>
+    <figure class="house">
+      <svg class="roof" viewBox="0 0 600 175" aria-hidden="true"><path class="rp" id="heroRoof" pathLength="1"/><rect x="0" y="162" width="600" height="8" fill="#f0b323"/></svg>
+      <div class="wall"><img src="assets/pasangan-selamat-datang.jpg" alt="Anak daro dan marapulai berbusana adat marun dan emas menyambut tamu" fetchpriority="high"></div>
+      <div class="stilts"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i></div>
+      <div class="ground"></div>
+    </figure>
+    <div class="h-meta fade">
+      <span class="mono" style="color:var(--kuning)">Sumatera Barat · Ranah Minangkabau</span>
+      <p>Negeri yang adatnya ditenun, bukan hanya ditulis. Di sini dipajang busana, falsafah, rumah, dan bunyi dari tanah Minang.</p>
+      <div class="scroll mono"><i></i>Gulir</div>
+    </div>
+  </div>
+  <svg class="pr" data-n="36" aria-hidden="true"></svg>
+</section>
+
+<!-- GALERI -->
+<section id="galeri" class="pin">
+  <div class="sticky">
+    <div class="track" id="track">
+      <div class="gintro">
+        <span class="mono" style="color:var(--kuning)">Bab 01 — Gambar</span>
+        <h2 class="h2"><span class="ln"><span>Beludru,</span></span><span class="ln"><span><em>benang emas.</em></span></span></h2>
+        <p>Suntiang yang bergetar tiap melangkah, sulaman yang dikerjakan helai demi helai. Empat potret dari pelaminan. Gulir ke bawah untuk berjalan di sepanjang dindingnya.</p>
+      </div>
+      <figure class="fig" style="--ar:1402/1122" data-i="0"><span class="no mono">01</span><img src="assets/pasangan-selamat-datang.jpg" alt="Pasangan menyambut tamu" style="object-position:50% 30%"><figcaption class="mono"><b>Salamaik datang</b><span>Anak daro dan marapulai menyambut tamu di depan pelaminan emas dan beludru merah.</span></figcaption></figure>
+      <figure class="fig" style="--ar:1086/1448" data-i="1"><span class="no mono">02</span><img src="assets/pengantin-wanita.jpg" alt="Anak daro dengan suntiang bertanduk"><figcaption class="mono"><b>Anak daro</b><span>Suntiang bertanduk di atas hijab marun, dukuah berlapis, dan rumbai emas di bahu.</span></figcaption></figure>
+      <figure class="fig" style="--ar:1122/1402" data-i="2"><span class="no mono">03</span><img src="assets/pengantin-pria.jpg" alt="Marapulai berdeta"><figcaption class="mono"><b>Marapulai</b><span>Deta bersulam emas, kalung tiga lapis, sasampiang songket, dan karih di pinggang.</span></figcaption></figure>
+      <figure class="fig" style="--ar:1312/1199" data-i="3"><span class="no mono">04</span><img src="assets/pasangan-pelaminan.jpg" alt="Pasangan berdiri berdampingan" style="object-position:50% 25%"><figcaption class="mono"><b>Basanding</b><span>Berdiri berdampingan, lengan saling menggamit, serasi dalam marun dan emas.</span></figcaption></figure>
+      <div class="gend mono">Lanjut ke bawah ↓</div>
+    </div>
+    <div class="gctl mono"><span id="gcount">01 / 04</span><div class="pg"><i id="gprog"></i></div><span>Gulir</span></div>
+  </div>
+</section>
+
+<!-- BUSANA -->
+<section id="busana" class="sec cream">
+  <div class="wrap">
+    <header class="sh">
+      <span class="mono">Bab 02 — Pakaian adat</span>
+      <h2 class="h2 rv"><span class="ln"><span>Busana, <em>satu</em></span></span><span class="ln"><span>per satu.</span></span></h2>
+      <p class="sub rv">Setiap perhiasan punya nama. Arahkan kursor atau ketuk angka pada foto, atau pilih namanya dari daftar.</p>
+    </header>
+    <div class="plates">
+      <div class="pl rv">
+        <div class="cap0 mono"><span>Plat A</span><span>Anak daro</span></div>
+        <div class="ph" style="--ar:1086/1448"><img loading="lazy" src="assets/pengantin-wanita.jpg" alt="Busana anak daro">
+          <button class="mk" style="left:50%;top:11%" data-n="1">1</button><button class="mk" style="left:60%;top:51%" data-n="2">2</button><button class="mk" style="left:62%;top:82%" data-n="3">3</button><button class="mk" style="left:25%;top:93%" data-n="4">4</button>
+        </div>
+        <ul class="leg">
+          <li data-n="1"><span class="n">01</span><div><b>Suntiang</b><span>Mahkota emas bersusun: bunga, kupu-kupu, dan rumbai yang bergetar saat berjalan. Pada gaya bertanduk, bentuknya merujuk tanduk kerbau. Beratnya bisa beberapa kilogram.</span></div></li>
+          <li data-n="2"><span class="n">02</span><div><b>Dukuah</b><span>Kalung emas bersusun dari leher ke dada, bagian paling besar dan mencolok dari perhiasan anak daro.</span></div></li>
+          <li data-n="3"><span class="n">03</span><div><b>Pending</b><span>Ikat pinggang emas berkepala bundar berukir, mengikat busana beludru di pinggang.</span></div></li>
+          <li data-n="4"><span class="n">04</span><div><b>Galang</b><span>Gelang emas yang dipakai bersusun di pergelangan tangan.</span></div></li>
+        </ul>
+      </div>
+      <div class="pl rv" style="--dl:.15s">
+        <div class="cap0 mono"><span>Plat B</span><span>Marapulai</span></div>
+        <div class="ph" style="--ar:1122/1402"><img loading="lazy" src="assets/pengantin-pria.jpg" alt="Busana marapulai">
+          <button class="mk" style="left:50%;top:11%" data-n="1">1</button><button class="mk" style="left:52%;top:55%" data-n="2">2</button><button class="mk" style="left:28%;top:50%" data-n="3">3</button><button class="mk" style="left:62%;top:79%" data-n="4">4</button>
+        </div>
+        <ul class="leg">
+          <li data-n="1"><span class="n">01</span><div><b>Deta <i style="font-weight:400">(saluak)</i></b><span>Penutup kepala dari kain bersulam emas yang dilipat membentuk kerucut. Tanda kehormatan marapulai.</span></div></li>
+          <li data-n="2"><span class="n">02</span><div><b>Kalung</b><span>Tiga lempeng emas berbentuk bulan sabit, bersusun di dada.</span></div></li>
+          <li data-n="3"><span class="n">03</span><div><b>Sasampiang songket</b><span>Selempang songket tenun benang emas yang disandang dari bahu.</span></div></li>
+          <li data-n="4"><span class="n">04</span><div><b>Karih</b><span>Keris bergagang emas yang terselip di pinggang; lambang tanggung jawab menjaga keluarga dan nagari.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FALSAFAH -->
+<section id="falsafah" class="sec red">
+  <div class="wrap">
+    <header class="sh">
+      <span class="mono">Bab 03 — Pegangan hidup</span>
+      <h2 class="h2 rv"><span class="ln"><span>Adat yang</span></span><span class="ln"><span><em>diucapkan.</em></span></span></h2>
+      <p class="sub rv">Minangkabau menyimpan hukumnya dalam pepatah. Enam di antaranya.</p>
+    </header>
+    <div class="rows">
+      <div class="row rv"><span class="mono">01</span><h3>Alam takambang jadi guru</h3><p>Alam yang terkembang adalah guru. Karena itu ukiran Minang meniru pucuk rebung, itik pulang petang, dan sulur tanaman.</p></div>
+      <div class="row rv"><span class="mono">02</span><h3>Adat basandi syarak, syarak basandi Kitabullah</h3><p>Adat bersendi syariat, syariat bersendi Kitabullah. Pegangan yang menyatukan aturan adat dengan nilai agama.</p></div>
+      <div class="row rv"><span class="mono">03</span><h3>Tungku tigo sajarangan</h3><p>Tiga tungku sejerangan: ninik mamak, alim ulama, cadiak pandai. Tiga unsur yang menopang nagari seperti periuk di atas tungku.</p></div>
+      <div class="row rv"><span class="mono">04</span><h3>Bulek aia dek pambuluah, bulek kato dek mufakaik</h3><p>Air bulat karena pembuluh bambu, kata bulat karena mufakat. Keputusan lahir dari duduk bersama.</p></div>
+      <div class="row rv"><span class="mono">05</span><h3>Dimana bumi dipijak, di sinan langik dijunjuang</h3><p>Di mana bumi dipijak, di situ langit dijunjung. Hormati adat tempat kita berada.</p></div>
+      <div class="row rv"><span class="mono">06</span><h3>Bundo kanduang</h3><p>Garis keturunan mengikuti ibu. Rumah gadang dan harta pusaka diwariskan lewat perempuan.</p></div>
+    </div>
+    <div class="asal rv" id="asal">
+      <div>
+        <span class="mono" style="color:var(--kuning)">Asal nama</span>
+        <p class="big" style="margin-top:18px"><span class="strike">manang kabau</span><em>Minangkabau</em></p>
+      </div>
+      <p>Konon, demi menghindari perang, orang Minang mengadu kerbau mereka dengan kerbau raja asing. Anak kerbau yang lapar dipasangi tanduk runcing, menyerbu kerbau besar karena mencari susu, dan menang. Dari “menang kerbau” itulah nama Minangkabau lahir, dan tanduknya menjadi atap gonjong rumah gadang.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RUMAH GADANG -->
+<section id="rumah" class="sec cream">
+  <div class="wrap">
+    <header class="sh">
+      <span class="mono">Bab 04 — Arsitektur</span>
+      <h2 class="h2 rv"><span class="ln"><span>Rumah</span></span><span class="ln"><span><em>gadang.</em></span></span></h2>
+      <p class="sub rv">Gulir pelan-pelan. Rumahnya digambar mengikuti gerak jari Anda.</p>
+    </header>
+    <div class="rg" id="rg">
+      <svg viewBox="0 0 800 440" role="img" aria-label="Sketsa rumah gadang yang tergambar saat digulir">
+        <path class="d" pathLength="1" data-d="0" d="M30 405H770"/>
+        <path class="d" pathLength="1" data-d="1" d="M200 325V405M270 325V405M340 325V405M460 325V405M530 325V405M600 325V405"/>
+        <path class="d f" pathLength="1" data-d="2" d="M170 325H630L665 180H135Z"/>
+        <path class="d f roofp" id="rgRoof" pathLength="1" data-d="3"/>
+        <path class="d" pathLength="1" data-d="5" d="M375 325V235H425V325M360 405V385H380V365H400V345H420V325M440 405V385H420"/>
+        <path class="d" pathLength="1" data-d="6" d="M215 225H295V295H215ZM505 225H585V295H505ZM255 225V295M545 225V295"/>
+        <path class="d" pathLength="1" data-d="7" d="M150 205 168 220 150 235 132 220ZM650 205 668 220 650 235 632 220ZM335 200 350 214 335 228 320 214ZM465 200 480 214 465 228 450 214ZM400 190 415 203 400 216 385 203Z"/>
+        <path class="d f rangk" pathLength="1" data-d="8" d="M700 405V345H770V405M690 345 735 320 780 345Z"/>
+        <g class="lab"><circle cx="156" cy="16" r="15"/><text x="156" y="21">1</text><circle cx="235" cy="368" r="15"/><text x="235" y="373">2</text><circle cx="170" cy="270" r="15"/><text x="170" y="275">3</text><circle cx="735" cy="294" r="15"/><text x="735" y="299">4</text></g>
+      </svg>
+      <ol>
+        <li><i>1</i><div><b>Gonjong</b><span>Atap runcing menyerupai tanduk kerbau. Itulah wajah rumah gadang.</span></div></li>
+        <li><i>2</i><div><b>Rumah panggung</b><span>Tiang tinggi menjauhkan lantai dari tanah lembap dan banjir, dan lentur ketika gempa.</span></div></li>
+        <li><i>3</i><div><b>Ukiran</b><span>Dinding diukir motif flora dan fauna: “alam takambang jadi guru” yang dipahat.</span></div></li>
+        <li><i>4</i><div><b>Rangkiang</b><span>Lumbung padi di halaman untuk keluarga, tamu, dan masa paceklik.</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- MARAWA -->
+<section id="marawa" class="sec yellow">
+  <div class="wrap mw">
+    <div>
+      <header class="sh" style="margin-bottom:0">
+        <span class="mono">Bab 05 — Panji</span>
+        <h2 class="h2 rv"><span class="ln"><span>Marawa,</span></span><span class="ln"><span><em>tiga warna.</em></span></span></h2>
+      </header>
+      <ul class="cols rv">
+        <li><i style="background:#0f0b0a"></i><div><b>Hitam</b><span>Ninik mamak, pemimpin kaum. Melambangkan keteguhan dan kekekalan.</span></div></li>
+        <li><i style="background:#a8231b"></i><div><b>Merah</b><span>Cadiak pandai dan dubalang. Melambangkan keberanian dan daya tahan.</span></div></li>
+        <li><i style="background:#dc9d14"></i><div><b>Kuning</b><span>Alim ulama. Melambangkan keagungan dan kemuliaan.</span></div></li>
+      </ul>
+      <p class="note mono">Urutan dan tafsir warna bisa berbeda antar luhak.</p>
+    </div>
+    <div class="flagbox rv"><div class="pole"></div><canvas id="flag" width="960" height="600"></canvas></div>
+  </div>
+</section>
+
+<!-- BUNYI -->
+<section id="bunyi" class="sec">
+  <div class="wrap">
+    <header class="sh">
+      <span class="mono" style="color:var(--kuning)">Bab 06 — Bunyi</span>
+      <h2 class="h2 rv"><span class="ln"><span>Pukul</span></span><span class="ln"><span><em>talempong.</em></span></span></h2>
+      <p class="sub rv">Gong-gong perunggu kecil, dipukul bergantian hingga jadi melodi. Ketuk gongnya, atau tekan angka 1–5 di keyboard.</p>
+    </header>
+    <div class="gongs" id="gongs"></div>
+    <div class="glab mono" id="glab"></div>
+    <div class="tools"><button class="go y" id="demo">Mainkan irama ♪</button></div>
+
+    <div class="seni">
+      <div class="r rv"><h3>Tari piriang</h3><p>Penari menjaga piring di kedua telapak tangan sambil bergerak cepat. Tarian rasa syukur atas panen.</p></div>
+      <div class="r rv"><h3>Randai</h3><p>Teater rakyat berformasi lingkaran. Gerak galombang, tepuk, nyanyian, dan cerita dijalin jadi satu.</p></div>
+      <div class="r rv"><h3>Silek</h3><p>Bela diri Minang yang berpijak pada langkah ampek: empat langkah dasar, empat arah waspada.</p></div>
+      <div class="r rv"><h3>Saluang</h3><p>Seruling bambu tipis yang mengiringi dendang, sering terdengar di malam hari.</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <svg class="pr" data-n="36" aria-hidden="true"></svg>
+  <div class="wrap">
+    <span class="mono">Ranah Minangkabau</span>
+    <p class="big rv"><span class="ln"><span>Mang<em>kasih.</em></span></span></p>
+    <div class="cols2">
+      <p>Terima kasih sudah singgah. <em>Dima bumi dipijak, disinan langik dijunjuang.</em></p>
+      <span class="mono">Adat salingka nagari</span>
+    </div>
+  </div>
+</footer>
+
+<div id="lb"><button class="x">Tutup ✕</button><button class="pv">← </button><img alt=""><button class="nx"> →</button><div class="cap mono"></div></div>
+
+<audio id="bgm" src="assets/musik.mp3" loop preload="auto"></audio>
+<div id="player">
+  <button id="pp" aria-label="Putar atau jeda musik"><svg class="pl" viewBox="0 0 24 24" fill="currentColor"><path d="M6 3v18l15-9z"/></svg><svg class="pa" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3h5v18H5zM14 3h5v18h-5z"/></svg></button>
+  <div class="pm"><div class="t mono"><span>Musik</span><span id="tm">0:00</span></div><input id="seek" type="range" min="0" max="100" step=".1" value="0" aria-label="Posisi lagu"></div>
+  <div class="bars"><i style="--k:0"></i><i style="--k:1"></i><i style="--k:2"></i><i style="--k:3"></i></div>
+</div>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const NS = 'http://www.w3.org/2000/svg';
+
+  /* atap gonjong */
+  function roofPath(x0, x1, yb, n, h) {
+    const w = (x1 - x0) / n, vy = yb - h * .16; let d = `M${x0} ${yb}`;
+    for (let i = 0; i < n; i++) {
+      const xs = x0 + i * w, xe = xs + w, sy = i === 0 ? yb : vy, ey = i === n - 1 ? yb : vy;
+      const ty = yb - h * (i === 0 || i === n - 1 ? 1 : .8), tx = xs + w * (i === 0 ? .4 : i === n - 1 ? .6 : .5);
+      d += ` C${xs + w * .05} ${sy - h * .3} ${xs + w * .2} ${ty + h * .45} ${tx} ${ty}`;
+      d += ` C${tx + w * .06} ${ty + h * .4} ${xe - w * .15} ${ey - h * .1} ${xe} ${ey}`;
+    }
+    return d + ' Z';
+  }
+  $('#heroRoof').setAttribute('d', roofPath(6, 594, 162, 4, 150));
+  $('#rgRoof').setAttribute('d', roofPath(95, 705, 180, 4, 150));
+
+  /* pucuak rabuang */
+  $$('svg.pr').forEach(s => {
+    const n = innerWidth < 700 ? 18 : +s.dataset.n; s.setAttribute('viewBox', `0 0 ${n * 40} 30`); s.setAttribute('preserveAspectRatio', 'none');
+    for (let i = 0; i < n; i++) { const p = document.createElementNS(NS, 'polygon'); p.setAttribute('points', `${i * 40},30 ${i * 40 + 20},0 ${i * 40 + 40},30`); p.style.setProperty('--i', i); s.appendChild(p); }
+  });
+
+  /* tenun pembuka */
+  const cs = ['#0f0b0a', '#a8231b', '#f0b323', '#a8231b', '#0f0b0a', '#f0b323', '#a8231b', '#0f0b0a', '#a8231b', '#f0b323'];
+  $('#bands').innerHTML = cs.map((c, i) => `<div class="b" style="background:${c};--i:${i};--from:${i % 2 ? '100%' : '-100%'}"></div>`).join('');
+
+  /* audio */
+  const bgm = $('#bgm'), player = $('#player'), seek = $('#seek'), tm = $('#tm');
+  const fmt = s => isFinite(s) ? Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0') : '0:00';
+  $('#openBtn').addEventListener('click', () => {
+    $('#tenun').classList.add('go'); document.body.classList.remove('lock'); document.body.classList.add('opened');
+    bgm.play().catch(() => {});
+    setTimeout(() => $('#tenun').remove(), 2000);
+  });
+  $('#pp').addEventListener('click', () => bgm.paused ? bgm.play() : bgm.pause());
+  bgm.addEventListener('play', () => player.classList.add('on')); bgm.addEventListener('pause', () => player.classList.remove('on'));
+  bgm.addEventListener('timeupdate', () => { if (!bgm.duration) return; const p = bgm.currentTime / bgm.duration * 100; seek.value = p; seek.style.setProperty('--p', p + '%'); tm.textContent = fmt(bgm.currentTime) + ' / ' + fmt(bgm.duration); });
+  seek.addEventListener('input', () => { if (bgm.duration) bgm.currentTime = seek.value / 100 * bgm.duration; });
+
+  /* menu */
+  const menu = $('#menu'); $('#burger').addEventListener('click', () => { menu.classList.toggle('show'); $('#burger').textContent = menu.classList.contains('show') ? 'Tutup' : 'Menu'; });
+  menu.addEventListener('click', e => { if (e.target.tagName === 'A') { menu.classList.remove('show'); $('#burger').textContent = 'Menu'; } });
+
+  /* reveal */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .18 });
+  $$('.rv, svg.pr, .asal, .rg').forEach(el => io.observe(el));
+
+  /* galeri pinned */
+  const pin = $('#galeri'), track = $('#track'), figs = $$('.fig'), gprog = $('#gprog'), gcount = $('#gcount');
+  let dist = 0;
+  function layout() { dist = Math.max(0, track.offsetWidth - innerWidth); pin.style.height = (dist + innerHeight) + 'px'; }
+  addEventListener('resize', () => { layout(); tick(); }); addEventListener('load', () => { layout(); tick(); });
+
+  /* rumah gadang digambar saat scroll */
+  const rg = $('#rg'), ds = $$('.d', rg);
+
+  const bar = $('#bar'); let raf = 0;
+  function tick() {
+    raf = 0;
+    const y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = `scaleX(${h > 0 ? y / h : 0})`;
+    const r = pin.getBoundingClientRect(), p = dist > 0 ? clamp(-r.top / dist) : 0;
+    track.style.transform = `translate3d(${-p * dist}px,0,0)`;
+    gprog.style.transform = `scaleX(${p})`;
+    gcount.textContent = String(Math.round(p * (figs.length - 1)) + 1).padStart(2, '0') + ' / ' + String(figs.length).padStart(2, '0');
+    const g = rg.getBoundingClientRect(), t = clamp((innerHeight * .85 - g.top) / (innerHeight * .55 + g.height * .5));
+    ds.forEach(el => { const d = +el.dataset.d, l = clamp((t * 1.25 - d * .07) / .35); el.style.strokeDashoffset = 1 - l; });
+    rg.classList.toggle('full', t > .8);
+  }
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+  layout(); tick();
+
+  /* lightbox */
+  const lb = $('#lb'), lbi = $('img', lb), cap = $('.cap', lb); let cur = 0;
+  const show = i => { cur = (i + figs.length) % figs.length; const f = figs[cur]; lbi.src = $('img', f).src; lbi.alt = $('img', f).alt; cap.textContent = $('b', f).textContent; };
+  figs.forEach((f, i) => f.addEventListener('click', () => { show(i); lb.classList.add('show'); }));
+  const close = () => lb.classList.remove('show');
+  $('.x', lb).onclick = close; $('.pv', lb).onclick = e => { e.stopPropagation(); show(cur - 1); }; $('.nx', lb).onclick = e => { e.stopPropagation(); show(cur + 1); };
+  lb.addEventListener('click', e => { if (e.target === lb) close(); });
+  addEventListener('keydown', e => { if (!lb.classList.contains('show')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+  let sx = 0; lb.addEventListener('touchstart', e => sx = e.touches[0].clientX, { passive: true });
+  lb.addEventListener('touchend', e => { const d = e.changedTouches[0].clientX - sx; if (Math.abs(d) > 50) show(cur + (d < 0 ? 1 : -1)); });
+
+  /* busana: marker <-> daftar */
+  $$('.pl').forEach(pl => {
+    const all = $$('.mk', pl).concat($$('.leg li', pl));
+    const set = (n, on) => all.forEach(el => el.classList.toggle('on', on && el.dataset.n === n));
+    all.forEach(el => {
+      el.addEventListener('mouseenter', () => set(el.dataset.n, true));
+      el.addEventListener('mouseleave', () => set(el.dataset.n, false));
+      el.addEventListener('click', () => { const was = el.classList.contains('on'); all.forEach(x => x.classList.remove('on')); if (!was) set(el.dataset.n, true); });
+    });
+  });
+  $$('.row').forEach(r => r.addEventListener('click', () => r.classList.toggle('on')));
+
+  /* marawa (kanvas, berkibar) */
+  const fc = $('#flag'), fx = fc.getContext('2d'), FW = 960, FH = 600, cols = ['#0f0b0a', '#a8231b', '#dc9d14'];
+  function flag(t) {
+    fx.clearRect(0, 0, FW, FH);
+    for (let x = 0; x < FW; x += 4) {
+      const u = x / FW, ph = u * 8 - t * 2.6, off = Math.sin(ph) * 34 * u, sh = Math.cos(ph) * u;
+      const y0 = 50 + off, hh = FH - 150;
+      fx.fillStyle = cols[Math.min(2, Math.floor(u * 3))]; fx.fillRect(x, y0, 5, hh);
+      fx.fillStyle = sh < 0 ? `rgba(0,0,0,${-sh * .28})` : `rgba(255,240,200,${sh * .16})`; fx.fillRect(x, y0, 5, hh);
+      fx.fillStyle = '#0f0b0a'; fx.fillRect(x, y0, 5, 6); fx.fillRect(x, y0 + hh - 6, 5, 6);
+    }
+  }
+  let fvis = false; const ft0 = performance.now();
+  new IntersectionObserver(e => { fvis = e[0].isIntersecting; if (fvis) fl(); }).observe(fc);
+  function fl() { if (!fvis) return; flag((performance.now() - ft0) / 1000); if (!reduce) requestAnimationFrame(fl); }
+  flag(0);
+
+  /* talempong */
+  let ac; const notes = [['Do', 523.25], ['Re', 587.33], ['Mi', 659.25], ['Sol', 783.99], ['La', 880]];
+  function ding(f) {
+    ac = ac || new (window.AudioContext || window.webkitAudioContext)(); if (ac.state === 'suspended') ac.resume();
+    const t = ac.currentTime, g = ac.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.4, t + .008); g.gain.exponentialRampToValueAtTime(.0008, t + 1.5); g.connect(ac.destination);
+    [[1, 1], [2.76, .35], [5.4, .14]].forEach(([m, a]) => { const o = ac.createOscillator(), og = ac.createGain(); o.frequency.value = f * m; og.gain.value = a; o.connect(og).connect(g); o.start(t); o.stop(t + 1.6); });
+  }
+  const gongs = $('#gongs'), glab = $('#glab');
+  notes.forEach(([n, f], i) => {
+    const b = document.createElement('button'); b.className = 'gong'; b.setAttribute('aria-label', 'Talempong ' + n); b.addEventListener('pointerdown', () => hit(i)); gongs.appendChild(b);
+    glab.insertAdjacentHTML('beforeend', `<span>${i + 1} ${n}</span>`);
+  });
+  function hit(i) { const g = gongs.children[i]; ding(notes[i][1]); g.classList.remove('hit'); void g.offsetWidth; g.classList.add('hit'); setTimeout(() => g.classList.remove('hit'), 140); }
+  addEventListener('keydown', e => { const n = +e.key; if (n >= 1 && n <= 5) hit(n - 1); });
+  let busy = false;
+  $('#demo').addEventListener('click', async () => { if (busy) return; busy = true; for (const s of [0, 2, 3, 2, 4, 3, 2, 1, 0, 1, 2, 0]) { hit(s); await new Promise(r => setTimeout(r, 300)); } busy = false; });
+})();
+</script>
+</body>
+</html>
